@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  generateName: appdev-surveyapi-YYYYY
+  generateName: appdev-surveyapi-
 projects:
   - name: spring-rest-surveygroups
     source:
@@ -17,6 +17,9 @@ components:
     volumes:
       - name: m2
         containerPath: /home/jboss/.m2
+    endpoints:
+      - name: 8080/tcp
+        port: 8080
     alias: maven
     env:
       - value: /home/jboss/.m2
@@ -33,13 +36,13 @@ components:
 commands:
   - name: maven build
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/console-java-simple'
+      - workdir: '${CHE_PROJECTS_ROOT}/spring-rest-surveygroups'
         type: exec
-        command: ./mvnw clean package
+        command: mvn clean package
         component: maven
   - name: maven build and run
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/console-java-simple'
+      - workdir: '${CHE_PROJECTS_ROOT}/spring-rest-surveygroups'
         type: exec
-        command: ./mvnw spring-boot:run
+        command: mvn spring-boot:run
         component: maven
