@@ -1,0 +1,29 @@
+---
+server:
+  port: 8080
+
+logging:
+  level:
+    org.hibernate.SQL: INFO
+
+spring:
+  datasource:
+    url: jdbc:${DB_URI:h2:mem:surveydb;DB_CLOSE_DELAY=-1}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:password}
+    driverClassName: org.h2.Driver
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.H2Dialect
+      hibernate.jdbc.lob.non_contextual_creation: true
+    hibernate:
+      ddl-auto: create-drop
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace
+  trace:
+    http:
+    enabled: true
