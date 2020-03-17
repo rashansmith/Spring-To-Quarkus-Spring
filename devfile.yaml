@@ -1,0 +1,45 @@
+apiVersion: 1.0.0
+metadata:
+  generateName: appdev-surveyapi-YYYYY
+projects:
+  - name: spring-rest-surveygroups
+    source:
+      location: 'https://gitlab.consulting.redhat.com/appdev-coe/examples/spring-rest-surveygroups.git'
+      type: git
+      branch: master
+components:
+  - id: redhat/java8/latest
+    type: chePlugin
+  - image: 'registry.redhat.io/codeready-workspaces/stacks-java-rhel8:2.0'
+    mountSources: true
+    memoryLimit: 512Mi
+    type: dockerimage
+    volumes:
+      - name: m2
+        containerPath: /home/jboss/.m2
+    alias: maven
+    env:
+      - value: /home/jboss/.m2
+        name: MAVEN_CONFIG
+      - value: >-
+          -XX:MaxRAMPercentage=50.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
+          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
+          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
+          -Xms20m -Djava.security.egd=file:/dev/./urandom
+          -Duser.home=/home/jboss
+        name: JAVA_OPTS
+      - value: $(JAVA_OPTS)
+        name: MAVEN_OPTS
+commands:
+  - name: maven build
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/console-java-simple'
+        type: exec
+        command: ./mvnw clean package
+        component: maven
+  - name: maven build and run
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/console-java-simple'
+        type: exec
+        command: ./mvnw spring-boot:run
+        component: maven
