@@ -22,7 +22,7 @@ public class SurveyApiConfiguration {
     public OpenAPI customOpenAPI() {
         return new OpenAPI().components(new Components())
                 .info(new Info().title("Survey Group API").description("An API for managing survey groups.")
-                        .contact(new Contact().email("appdevpractice@redhat.com")));
+                        .contact(new Contact().email("na-services-appdev-practice@redhat.com")));
     }
 
 }

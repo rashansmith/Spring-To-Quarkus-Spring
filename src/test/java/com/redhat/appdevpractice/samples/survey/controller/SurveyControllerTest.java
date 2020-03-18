@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 
+import com.redhat.appdevpractice.samples.survey.http.NewSurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 import com.redhat.appdevpractice.samples.survey.service.SurveyServiceImpl;
@@ -46,7 +47,7 @@ public class SurveyControllerTest {
 
         when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(new SurveyGroup());
         
-        this.controller.createSurvey(new SurveyGroupResource());
+        this.controller.createSurvey(new NewSurveyGroupResource());
 
         verify(surveyService, times(1)).createSurveyGroup(any(SurveyGroup.class));
     }
@@ -55,7 +56,7 @@ public class SurveyControllerTest {
     public void shouldReturn201Created() throws URISyntaxException {
 
         when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(new SurveyGroup());
-        ResponseEntity<String> response = this.controller.createSurvey(new SurveyGroupResource());
+        ResponseEntity<String> response = this.controller.createSurvey(new NewSurveyGroupResource());
         
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
     }
@@ -69,7 +70,7 @@ public class SurveyControllerTest {
         persistedGroup.setGuid(guid);
 
         when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(persistedGroup);
-        ResponseEntity<String> response = this.controller.createSurvey(new SurveyGroupResource());
+        ResponseEntity<String> response = this.controller.createSurvey(new NewSurveyGroupResource());
         
         String locationHeaderPath = response.getHeaders().getLocation().getPath();
         assertEquals("/surveygroups/" + guid, locationHeaderPath);

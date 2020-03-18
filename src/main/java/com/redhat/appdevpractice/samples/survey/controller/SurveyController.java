@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.redhat.appdevpractice.samples.survey.http.NewSurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.http.utils.HttpUtils;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
@@ -40,7 +41,7 @@ public class SurveyController {
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on our side.")
         })
     @PostMapping("/surveygroups")
-    public ResponseEntity<String> createSurvey(@RequestBody SurveyGroupResource newSurveyGroup) {
+    public ResponseEntity<String> createSurvey(@RequestBody NewSurveyGroupResource newSurveyGroup) {
 
         SurveyGroup surveyGroup = HttpUtils.convertToSurveyGroupFrom(newSurveyGroup);
 

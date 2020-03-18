@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.redhat.appdevpractice.samples.survey.http.EmployeeAssignmentResource;
+import com.redhat.appdevpractice.samples.survey.http.NewSurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.http.SkillResource;
 import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.model.EmployeeAssignment;
@@ -15,7 +16,7 @@ public class HttpUtils {
 
     private HttpUtils() { }
 
-    public static SurveyGroup convertToSurveyGroupFrom(SurveyGroupResource newSurveyGroup) {
+    public static SurveyGroup convertToSurveyGroupFrom(NewSurveyGroupResource newSurveyGroup) {
 
         SurveyGroup group = new SurveyGroup();
         group.setOpportunityId(newSurveyGroup.getOpportunityId());
@@ -33,6 +34,31 @@ public class HttpUtils {
 
         List<Skill> skills = new ArrayList<>();
         newSurveyGroup.getSkillsUsed().forEach(skillResource -> 
+            skills.add(convertToSkillFrom(skillResource)));
+
+        group.setSkillsUsed(skills);
+
+        return group;
+    }
+    
+    public static SurveyGroup convertToSurveyGroupFrom(SurveyGroupResource surveyGroupResource) {
+
+        SurveyGroup group = new SurveyGroup();
+        group.setOpportunityId(surveyGroupResource.getOpportunityId());
+        group.setProjectId(surveyGroupResource.getProjectId());
+        group.setProjectName(surveyGroupResource.getProjectName());
+        group.setTsmId(surveyGroupResource.getTsmId());
+        group.setProjectCreatorId(surveyGroupResource.getProjectCreatorId());
+
+        List<EmployeeAssignment> employeeAssignments = new ArrayList<>();
+        surveyGroupResource.getEmployeeAssignments()
+                .forEach(employeeResource ->
+            employeeAssignments.add(convertToEmployeeFrom(employeeResource)) );
+
+        group.setEmployeeAssignments(employeeAssignments);
+
+        List<Skill> skills = new ArrayList<>();
+        surveyGroupResource.getSkillsUsed().forEach(skillResource -> 
             skills.add(convertToSkillFrom(skillResource)));
 
         group.setSkillsUsed(skills);
