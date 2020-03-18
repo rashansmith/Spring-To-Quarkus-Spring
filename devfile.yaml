@@ -22,8 +22,6 @@ components:
         port: 8080
     alias: maven
     env:
-      - value: /home/jboss/.m2
-        name: MAVEN_CONFIG
       - value: >-
           -XX:MaxRAMPercentage=50.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
           -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
