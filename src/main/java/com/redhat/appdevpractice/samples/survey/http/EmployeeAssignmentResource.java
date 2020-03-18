@@ -4,19 +4,10 @@ import java.time.LocalDate;
 
 public class EmployeeAssignmentResource {
 
-    private String id;
     private String email;
     private String role;
     private LocalDate startProjectDate;
     private LocalDate endProjectDate;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;

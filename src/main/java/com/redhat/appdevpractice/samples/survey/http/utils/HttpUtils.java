@@ -114,7 +114,6 @@ public class HttpUtils {
     public static EmployeeAssignmentResource convertToEmployeeAssignmentResourceFrom(EmployeeAssignment ea) {
         
         EmployeeAssignmentResource employeeAssignmentResource = new EmployeeAssignmentResource();
-        employeeAssignmentResource.setId(ea.getEmployeeId());
         employeeAssignmentResource.setRole(ea.getRole());
         employeeAssignmentResource.setEmail(ea.getEmail());
         employeeAssignmentResource.setStartProjectDate(ea.getStartProjectDate());
