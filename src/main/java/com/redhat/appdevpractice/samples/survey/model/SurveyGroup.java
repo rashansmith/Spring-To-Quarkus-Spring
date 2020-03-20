@@ -38,7 +38,7 @@ public class SurveyGroup {
         inverseJoinColumns = { @JoinColumn(name = "employee_assignement_id") })
     private List<EmployeeAssignment> employeeAssignments;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "surveygroup_skills", 
         joinColumns = { @JoinColumn(name = "id") }, 
         inverseJoinColumns = { @JoinColumn(name = "skill_id") })
@@ -120,5 +120,16 @@ public class SurveyGroup {
     public void setSkillsUsed(List<Skill> skillsUsed) {
         this.skillsUsed = skillsUsed;
     }
+
+	public void updateWith(SurveyGroup newSurveyGroup) {
+        this.opportunityId = newSurveyGroup.getOpportunityId();
+        this.projectCreatorId = newSurveyGroup.getProjectCreatorId();
+        this.projectId = newSurveyGroup.getProjectId();
+        this.projectName = newSurveyGroup.getProjectName();
+        this.tsmId = newSurveyGroup.getTsmId();
+
+        this.skillsUsed = newSurveyGroup.getSkillsUsed();
+        this.employeeAssignments = newSurveyGroup.getEmployeeAssignments();
+	}
 
 }

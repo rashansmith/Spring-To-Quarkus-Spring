@@ -37,4 +37,10 @@ public class SurveyServiceImpl implements SurveyService {
         return surveyGroup;
     }
 
+    @Override
+    public SurveyGroup updateSurveyGroup(SurveyGroup oldSurveyGroup, SurveyGroup newSurveyGroup) {
+        oldSurveyGroup.updateWith(newSurveyGroup);
+        return this.surveyGroupRepository.saveAndFlush(oldSurveyGroup);
+    }
+
 }
