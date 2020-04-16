@@ -18,37 +18,7 @@ pipeline {
                 sh 'cp target/*.jar deployments/' 
             }
         }
-        stage('Ensure Sonar Webhook is configured') {
-            when {
-                expression {
-                    withSonarQubeEnv('sonar') {
-                        def retVal = sh(returnStatus: true, script: "curl -u \"${SONAR_AUTH_TOKEN}:\" http://sonarqube:9000/api/webhooks/list | grep Jenkins")
-                        echo "CURL COMMAND: ${retVal}"
-                        return (retVal > 0)
-                    }
-                }
-            }
-            steps {
-                 withSonarQubeEnv('sonar') {
-                     sh "/usr/bin/curl -X POST -u \"${SONAR_AUTH_TOKEN}:\" -F \"name=Jenkins\" -F \"url=http://jenkins/sonarqube-webook/\" http://sonarqube:9000/api/webhooks/create"
-                 }
-            }
-        }
-        stage('Sonar Quality Gate') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonar') {
-                        sh 'unset JAVA_TOOL_OPTIONS'
-                    }
-                    def qualityGate = waitForQualityGate()
-                    if (qualityGate.status != "OK") {
-                        error "Pipeline aborted due to quality gate failure: ${qualityGate.status}"
-                    }
-                }
-            }
-        }
-
-
+        
         stage('Promote to Dev') { 
             steps {
                 echo '***** Promoting Spring CRUD Service to DEV *****' 
