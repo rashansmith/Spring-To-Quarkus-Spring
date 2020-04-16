@@ -58,9 +58,6 @@ pipeline {
                         openshift.withProject('app-dev-ci-cd') {
                             	openshift.selector("bc", "survey-service").startBuild("--from-dir=deployments")
 				                openshift.tag("survey-service:latest", "consultant-360-dev/survey-service:latest")
-				                openshift.tag("survey-service:latest", "consultant-360-dev-mesh/survey-service:latest")
-				                openshift.tag("manager-360-fe:latest", "consultant-360-dev-mesh/manager-360-fe:latest")
-				                openshift.tag("consultant-360-fe:latest", "consultant-360-dev-mesh/consultant-360-fe:latest")
                         }
                     }
                 }
