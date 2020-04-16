@@ -25,9 +25,9 @@ pipeline {
                 sh 'ls target'
                 script {
                     openshift.withCluster() {
-                        openshift.withProject('app-dev-ci-cd') {
+                        openshift.withProject('appdev-example-ci-cd') {
                             	openshift.selector("bc", "survey-service").startBuild("--from-dir=deployments")
-				                openshift.tag("survey-service:latest", "consultant-360-dev/survey-service:latest")
+				                openshift.tag("survey-service:latest", "appdev-example-dev/survey-service:latest")
                         }
                     }
                 }
