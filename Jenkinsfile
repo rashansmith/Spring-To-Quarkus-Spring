@@ -26,8 +26,8 @@ pipeline {
                 script {
                     openshift.withCluster() {
                         openshift.withProject('appdev-example-ci-cd') {
-                            	openshift.selector("bc", "spring-service").startBuild("--from-dir=deployments")
-				                openshift.tag("spring-service:latest", "appdev-example-dev/spring-service:latest")
+                            	openshift.selector("bc", "survey-service").startBuild("--from-dir=deployments")
+				                openshift.tag("survey-service:latest", "appdev-example-dev/spring-service:latest")
                         }
                     }
                 }
