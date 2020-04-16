@@ -4,7 +4,7 @@ metadata:
 projects:
   - name: spring-rest-surveygroups
     source:
-      location: 'https://gitlab.consulting.redhat.com/appdev-coe/examples/spring-rest-surveygroups.git'
+      location: 'https://github.com/redhat-appdev-practice/spring-rest-surveygroups.git'
       type: git
       branch: master
 components:
