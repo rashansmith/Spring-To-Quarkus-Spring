@@ -9,11 +9,11 @@ pipeline {
         		echo '****** Show Maven Wrapper Version ******'
         		sh './mvnw -v'
                 echo '****** mvn test ******'
-        		sh './mvnw test -P dev'
+        		sh './mvnw test 
                 echo '****** mvn test ******'
         		sh './mvnw sonar:sonar -Dsonar.host.url=https://sonarqube-app-dev-ci-cd.apps.shared-dev.dev.openshift.opentlc.com/ -Dsonar.login=34e38f4789b25a558f9ecaf36047381dad86f75e'
         		echo '****** mvn clean package ******'
-        		sh './mvnw package -DskipTests -P dev'
+        		sh './mvnw package -DskipTests'
                 sh 'mkdir deployments' 
                 sh 'cp target/*.jar deployments/' 
             }
