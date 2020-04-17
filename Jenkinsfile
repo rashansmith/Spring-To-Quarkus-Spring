@@ -1,45 +1,79 @@
+library identifier: "pipeline-library@v1.5",
+retriever: modernSCM(
+  [
+    $class: "GitSCMSource",
+    remote: "https://github.com/redhat-cop/pipeline-library.git"
+  ]
+)
+
+openshift.withCluster() {
+  env.NAMESPACE = openshift.project()
+  env.APP_NAME = "${JOB_NAME}".replaceAll(/-pipeline.*/, '')
+  echo "Starting Pipeline for ${APP_NAME}..."
+  env.BUILD = "${env.NAMESPACE}"
+  env.DEV = "${APP_NAME}-dev"
+  env.STAGE = "${APP_NAME}-test"
+  env.PROD = "${APP_NAME}-demo"
+}
+
 pipeline {
-    agent {
-        label "jenkins-slave-mvn"
-    }
-    stages {
-        stage('Build') {
-            steps {
-        		echo '****** Compilation and Testing of Spring CRUD Service ******'
-        		echo '****** Show Maven Wrapper Version ******'
-        		sh './mvnw -v'
-                echo '****** mvn test ******'
-        		sh './mvnw test'
-                echo '****** mvn test ******'
-        		sh './mvnw sonar:sonar -Dsonar.host.url=https://sonarqube-app-dev-ci-cd.apps.shared-dev.dev.openshift.opentlc.com/ -Dsonar.login=34e38f4789b25a558f9ecaf36047381dad86f75e'
-        		echo '****** mvn clean package ******'
-        		sh './mvnw package -DskipTests'
-                sh 'mkdir deployments' 
-                sh 'cp target/*.jar deployments/' 
-            }
-        }
-        
-        stage('Promote to Dev') { 
-            steps {
-                echo '***** Promoting Spring CRUD Service to DEV *****' 
-                sh 'ls target'
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject('appdev-example-ci-cd') {
-                            	openshift.selector("bc", "survey-service").startBuild("--from-dir=deployments", "--wait")
-				                openshift.tag("survey-service:latest", "appdev-example-dev/spring-service:latest")
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+  // Use Jenkins Maven slave
+  // Jenkins will dynamically provision this as OpenShift Pod
+  // All the stages and steps of this Pipeline will be executed on this Pod
+  // After Pipeline completes the Pod is killed so every run will have clean
+  // workspace
+  agent {
+    label 'jenkins-slave-mvn'
+  }
 
-def getJenkinsMaster() {
-    return env.BUILD_URL.split('/')[2].split(':')[0]
-}
+  // Pipeline Stages start here
+  // Requeres at least one stage
+  stages {
 
-def getURL() {
-    return "http://" + getJenkinsMaster() + ":8080"
+    // Run Maven build, skipping tests
+    stage('Build'){
+      steps {
+        sh "mvn -B clean install -DskipTests=true"
+      }
+    }
+
+    // Run Maven unit tests
+    stage('Unit Test'){
+      steps {
+        sh "mvn -B test -f ${POM_FILE}"
+      }
+    }
+
+    // Build Container Image using the artifacts produced in previous stages
+    stage('Build Container Image'){
+      steps {
+        // Copy the resulting artifacts into common directory
+        sh """
+          ls target/*
+          rm -rf oc-build && mkdir -p oc-build/deployments
+          for t in \$(echo "jar;war;ear" | tr ";" "\\n"); do
+            cp -rfv ./target/*.\$t oc-build/deployments/ 2> /dev/null || echo "No \$t files"
+          done
+        """
+
+        // Build container image using local Openshift cluster
+        // Giving all the artifacts to OpenShift Binary Build
+        // This places your artifacts into right location inside your S2I image
+        // if the S2I image supports it.
+        binaryBuild(projectName: env.BUILD, buildConfigName: env.APP_NAME, buildFromPath: "oc-build")
+      }
+    }
+
+    stage('Promote from Build to Dev') {
+      steps {
+        tagImage(sourceImageName: env.APP_NAME, sourceImagePath: env.BUILD, toImagePath: env.DEV)
+      }
+    }
+
+    stage ('Verify Deployment to Dev') {
+      steps {
+        verifyDeployment(projectName: env.DEV, targetApp: env.APP_NAME)
+      }
+    }
+  }
 }
