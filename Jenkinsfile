@@ -8,7 +8,7 @@ retriever: modernSCM(
 
 openshift.withCluster() {
   env.NAMESPACE = openshift.project()
-  env.APP_NAME = "${JOB_NAME}".replaceAll(/-pipeline.*/, '')
+  env.APP_NAME = "${JOB_NAME}".replaceAll(/-pipeline.*/, '').replaceAll(/^${NAMESPACE}/${NAMESPACE}-/, '')
   echo "Starting Pipeline for ${APP_NAME}..."
   env.BUILD = "${env.NAMESPACE}"
   env.DEV = "${APP_NAME}-dev"
