@@ -71,7 +71,7 @@ pipeline {
 
     stage('Verify Deployment to Dev') {
       steps {
-        verifyDeployment(projectName: env.DEV, targetApp: env.APP_NAME)
+        verifyDeployment(projectName: env.DEV, targetApp: 'spring-service')
       }
     }
   }
