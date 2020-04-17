@@ -65,7 +65,7 @@ pipeline {
 
     stage('Promote from Build to Dev') {
       steps {
-        tagImage(sourceImageName: env.APP_NAME, sourceImagePath: env.NAMESPACE, toImagePath: env.DEV)
+        tagImage(sourceImageName: env.APP_NAME, sourceImagePath: env.NAMESPACE, toImagePath: env.DEV, toImageName: 'spring-service')
       }
     }
 
