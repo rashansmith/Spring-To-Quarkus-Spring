@@ -5,7 +5,7 @@ The App Dev Practice has created a Spring Boot application that exposes a ReSTfu
 The application manages the concept of a **Survey Group**. This represents the target of surveys for a Red Hat consulting project, the skills required to complete the project, and the employee assigned to the project. 
 
 ## API Definition
-This service is built in a contract-first manner.  You can find the API definition hosted at <TBD>.
+This service is built in a contract-first manner.  You can find the API definition hosted at https://studio.apicur.io/apis/26569.
 
 
 ### Technologies
