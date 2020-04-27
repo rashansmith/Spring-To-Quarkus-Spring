@@ -51,3 +51,9 @@ The best way to test the API manually is to use Postman and make calls to your s
 Alternatively, you can use curl. Ex:
 ```
 curl http://localhost:8080/surveyGroups/
+```
+
+
+### Code Ready Workspace
+
+Can be deployed in code ready workspace using: http://`CRW_route_url.com`/f?url=https://raw.githubusercontent.com/redhat-appdev-practice/spring-rest-surveygroups/master/devfile.yaml

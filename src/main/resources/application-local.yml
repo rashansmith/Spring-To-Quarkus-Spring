@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    platform: localH2
+  h2:
+    console:
+        enabled: true
+        path: /h2-console

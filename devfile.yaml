@@ -42,5 +42,5 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}/spring-rest-surveygroups'
         type: exec
-        command: mvn spring-boot:run
+        command: mvn spring-boot:run -Dspring-boot.run.profiles=local
         component: maven

@@ -35,7 +35,7 @@ public class SurveyGroup {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "surveygroup_employee_assignments", 
         joinColumns = { @JoinColumn(name = "id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "employee_assignement_id") })
+        inverseJoinColumns = { @JoinColumn(name = "employee_assignment_id") })
     private List<EmployeeAssignment> employeeAssignments;
 
     @ManyToMany(cascade = CascadeType.ALL)
