@@ -7,7 +7,6 @@ import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.model.EmployeeAssignment;
 import com.redhat.appdevpractice.samples.survey.model.Skill;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
-import org.mapstruct.MapMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
