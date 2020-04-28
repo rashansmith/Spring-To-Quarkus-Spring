@@ -76,7 +76,19 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.2.33</version>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.2.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>1.2.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
@@ -139,6 +151,16 @@
                     </execution>
                 </executions>
             </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.2</version>
+				<configuration>
+					<annotationProcessors>
+						<annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>
+					</annotationProcessors>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

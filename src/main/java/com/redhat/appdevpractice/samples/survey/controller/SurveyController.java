@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.redhat.appdevpractice.samples.survey.http.NewSurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
-import com.redhat.appdevpractice.samples.survey.http.utils.HttpUtils;
+import com.redhat.appdevpractice.samples.survey.http.utils.HttpMapper;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 import com.redhat.appdevpractice.samples.survey.service.SurveyServiceImpl;
 
@@ -43,8 +43,8 @@ public class SurveyController {
         })
     @PostMapping("/surveygroups")
     public ResponseEntity<String> createSurvey(@RequestBody NewSurveyGroupResource newSurveyGroup) {
-
-        SurveyGroup surveyGroup = HttpUtils.convertToSurveyGroupFrom(newSurveyGroup);
+        
+        SurveyGroup surveyGroup = HttpMapper.MAPPER.convertToSurveyGroupFrom(newSurveyGroup);
 
         surveyGroup = this.surveyService.createSurveyGroup(surveyGroup);
 
@@ -63,7 +63,7 @@ public class SurveyController {
         List<SurveyGroup> surveyGroups = surveyService.getSurveyGroups();
         
         List<SurveyGroupResource> resourceCollection = new ArrayList<>();
-        surveyGroups.forEach(sg -> resourceCollection.add(HttpUtils.convertToSurveyGroupResourceFrom(sg)));
+        surveyGroups.forEach(sg -> resourceCollection.add(HttpMapper.MAPPER.convertToSurveyGroupResourceFrom(sg)));
         
         return resourceCollection;
     }
@@ -81,7 +81,7 @@ public class SurveyController {
             return ResponseEntity.notFound().build();
         }
 
-        SurveyGroupResource resource = HttpUtils.convertToSurveyGroupResourceFrom(surveyGroup);
+        SurveyGroupResource resource = HttpMapper.MAPPER.convertToSurveyGroupResourceFrom(surveyGroup);
     
         return ResponseEntity.ok().body(resource);
     }
@@ -101,10 +101,10 @@ public class SurveyController {
             return ResponseEntity.notFound().build();
         }
 
-        SurveyGroup newSurveyGroup = HttpUtils.convertToSurveyGroupFrom(surveyGroupResource);
+        SurveyGroup newSurveyGroup = HttpMapper.MAPPER.convertToSurveyGroupFrom(surveyGroupResource);
         surveyGroup = surveyService.updateSurveyGroup(surveyGroup, newSurveyGroup);
 
-        SurveyGroupResource resource = HttpUtils.convertToSurveyGroupResourceFrom(surveyGroup);
+        SurveyGroupResource resource = HttpMapper.MAPPER.convertToSurveyGroupResourceFrom(surveyGroup);
     
         return ResponseEntity.ok().body(resource);
     }
