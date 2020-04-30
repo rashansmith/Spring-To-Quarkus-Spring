@@ -10,7 +10,7 @@
 	<name>Feedback 360 Survey API</name>
 	<description>A spring implementation for the Feedback 360 Survey API.</description>
 	<properties>
-	<compiler-plugin.version>3.8.1</compiler-plugin.version>
+	<compiler-plugin.version>3.6.3</compiler-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
