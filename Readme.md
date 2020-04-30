@@ -44,12 +44,12 @@ This service is built in a contract-first manner.  You can find the API definiti
 
 
 ### Technologies
-| name                                                                          | version   |
-| ----------------------------------------------------------------------------- | --------- |
-| [Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html) | 1.8.0_231 |
-| [Apache Maven](https://maven.apache.org/install.html)                         | 3.6.3     |
-| [Spring Boot](https://spring.io/projects/spring-boot#learn)                   | 2.2.2     |
-| [H2 Database](https://www.h2database.com/html/main.html)                      | 1.4       |
+| name                                                                           | version   |
+| ------------------------------------------------------------------------------ | --------- |
+| [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)| 11.-.7    |
+| [Apache Maven](https://maven.apache.org/install.html)                          | 3.6.3     |
+| [Spring Boot](https://spring.io/projects/spring-boot#learn)                    | 2.2.2     |
+| [H2 Database](https://www.h2database.com/html/main.html)                       | 1.4       |
 
 ### Building 
 ```
