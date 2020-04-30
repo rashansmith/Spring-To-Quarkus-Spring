@@ -25,6 +25,14 @@ You can run the quarkus application locally by issueing the following command:
 mvn quarkus:dev
 ```
 
+### Current Issues
+
+Right now most of the tests are failing. I suspect they may be related to 
+  - not mocking properly
+  - Jpa incompatibility/may need to switch to Panache
+  - Return types of controller methods
+
+
 
 
 ----------------------------------------------------------------------------------------------------------------------
