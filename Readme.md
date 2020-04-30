@@ -17,6 +17,7 @@ You can run the quarkus application locally by issueing the following command:
 
 ```
 mvn quarkus:dev
+```
 
 
 
