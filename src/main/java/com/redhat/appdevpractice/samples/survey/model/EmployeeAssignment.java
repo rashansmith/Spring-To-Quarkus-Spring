@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class EmployeeAssignment {
 
@@ -19,7 +21,9 @@ public class EmployeeAssignment {
     private String employeeId;
     private String email;
     private String role;
+    @JsonFormat(pattern = "YYYY-MM-dd")
     private LocalDate startProjectDate;
+    @JsonFormat(pattern = "YYYY-MM-dd")
     private LocalDate endProjectDate;
 
     @ManyToOne

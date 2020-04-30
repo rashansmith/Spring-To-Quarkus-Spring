@@ -6,17 +6,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.redhat.appdevpractice.samples.mockBeans.MockSurveyServiceImpl;
 import com.redhat.appdevpractice.samples.survey.exception.ResourceNotFoundException;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 import com.redhat.appdevpractice.samples.survey.repository.SurveyGroupRepository;
 
+import io.quarkus.test.junit.QuarkusMock;
+import io.quarkus.test.junit.QuarkusTest;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+//import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.Mockito;
 
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
+@QuarkusTest
 public class SurveyServiceImplTest {
 
     @Mock
@@ -25,12 +32,24 @@ public class SurveyServiceImplTest {
     @InjectMocks
     private SurveyServiceImpl surveyService;
 
+    @BeforeAll
+    public static void initialize()  {
+       /* MockHttpServletRequest request = new MockHttpServletRequest("POST", "/surveygroups"); 
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));*/
+    	
+       //MockHttpRequest request = MockHttpRequest.post("/surveygroups");
+       //MockHttpRequest.create("POST", "/surveygroups");
+    //	  mockServer = MockRestServiceServer.createServer(restTemplate)
+       MockSurveyServiceImpl mock = Mockito.mock(MockSurveyServiceImpl.class);  
+       QuarkusMock.installMockForType(mock, MockSurveyServiceImpl.class); 
+   }
+    
     @Test
     public void shouldCreateSurveyGroup() {
 
         SurveyGroup surveyGroup = new SurveyGroup();
 
-        when(this.repository.saveAndFlush(surveyGroup)).thenReturn(surveyGroup);
+        Mockito.when(this.repository.saveAndFlush(surveyGroup)).thenReturn(surveyGroup);
 
         this.surveyService.createSurveyGroup(surveyGroup);
 
@@ -42,7 +61,7 @@ public class SurveyServiceImplTest {
 
         SurveyGroup surveyGroup = new SurveyGroup();
 
-        when(this.repository.saveAndFlush(surveyGroup)).thenReturn(surveyGroup);
+        Mockito.when(this.repository.saveAndFlush(surveyGroup)).thenReturn(surveyGroup);
 
         this.surveyService.createSurveyGroup(surveyGroup);
 
@@ -62,7 +81,7 @@ public class SurveyServiceImplTest {
         String guid = "234234234";
 
         SurveyGroup surveyGroup = new SurveyGroup();
-        when(this.repository.findByGuid(guid)).thenReturn(surveyGroup);
+        Mockito.when(this.repository.findByGuid(guid)).thenReturn(surveyGroup);
 
         SurveyGroup returned = this.surveyService.getSurveyGroup(guid);
         verify(this.repository).findByGuid(guid);
@@ -75,7 +94,7 @@ public class SurveyServiceImplTest {
         
         String guid = "234234234";
 
-        when(this.repository.findByGuid(guid)).thenReturn(null);
+        Mockito.when(this.repository.findByGuid(guid)).thenReturn(null);
 
         assertThrows(ResourceNotFoundException.class, () -> {
             this.surveyService.getSurveyGroup(guid);

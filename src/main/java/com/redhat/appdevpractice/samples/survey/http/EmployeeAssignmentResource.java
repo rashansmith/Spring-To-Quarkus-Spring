@@ -2,11 +2,15 @@ package com.redhat.appdevpractice.samples.survey.http;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class EmployeeAssignmentResource {
 
     private String email;
     private String role;
+    @JsonFormat(pattern = "YYYY-MM-dd")
     private LocalDate startProjectDate;
+    @JsonFormat(pattern = "YYYY-MM-dd")
     private LocalDate endProjectDate;
 
     public String getEmail() {

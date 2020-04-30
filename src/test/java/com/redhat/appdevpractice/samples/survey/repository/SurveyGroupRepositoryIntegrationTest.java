@@ -8,13 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.redhat.appdevpractice.samples.survey.model.Skill;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 
+import io.quarkus.test.junit.QuarkusTest;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.ActiveProfiles;
+//import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+//import org.springframework.test.context.ActiveProfiles;
 
-@DataJpaTest
-@ActiveProfiles("test")
+//@DataJpaTest
+//@ActiveProfiles("test")
+@QuarkusTest
 public class SurveyGroupRepositoryIntegrationTest {
 
     @Autowired
@@ -33,7 +36,7 @@ public class SurveyGroupRepositoryIntegrationTest {
 
     @Test
     public void shouldReturnNullIfGuidNotFound() {
-        assertNull(this.surveyGroupRepository.findByGuid("guid123"));
+        assertNull(this.surveyGroupRepository.findByGuid("guid124"));
     }
 
     @Test
