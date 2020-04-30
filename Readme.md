@@ -1,11 +1,17 @@
 # Spring Boot ReSTful API Example - Migration To Quarkus
 The App Dev Practice has created a Spring Boot application that exposes a ReSTful API. The application can be used as a starter spring-boot application or as a unit to deploy to OCP clusters. 
 
-THere is a link to the original repo: https://github.com/redhat-appdev-practice/spring-rest-surveygroups
+Here is a link to the original repo: https://github.com/redhat-appdev-practice/spring-rest-surveygroups
 
 In this repo I am migrating the Spring Boot application to Quarkus: https://quarkus.io/
 
 This is currently a work in progress.
+
+### Current Strategy
+To get the dependencies needed to quarkify this app, a sample Quarkus app was made: https://github.com/rashansmith/Spring-To-Quarkus-Quarkus/tree/master/survey-quarkus-spring-service
+
+and it's pom.xml elements were transferred to this repo, and non quarkus Spring dependencies were deleted. 
+
 
 ### Building 
 ```
