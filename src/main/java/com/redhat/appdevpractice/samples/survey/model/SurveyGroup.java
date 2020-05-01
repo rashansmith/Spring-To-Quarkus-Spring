@@ -13,8 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 @Entity
-public class SurveyGroup {
+public class SurveyGroup extends PanacheEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

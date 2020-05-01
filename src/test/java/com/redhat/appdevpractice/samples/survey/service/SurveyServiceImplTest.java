@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import javax.transaction.Transactional;
+
 import com.redhat.appdevpractice.samples.mockBeans.MockSurveyServiceImpl;
 import com.redhat.appdevpractice.samples.survey.exception.ResourceNotFoundException;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
@@ -23,14 +25,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 //@ExtendWith(MockitoExtension.class)
+@Transactional
 @QuarkusTest
 public class SurveyServiceImplTest {
 
-    @Mock
+    @InjectMocks
     private SurveyGroupRepository repository;
 
     @InjectMocks
-    private SurveyServiceImpl surveyService;
+    private MockSurveyServiceImpl surveyService;
+    
 
     @BeforeAll
     public static void initialize()  {
@@ -49,11 +53,14 @@ public class SurveyServiceImplTest {
 
         SurveyGroup surveyGroup = new SurveyGroup();
 
-        Mockito.when(this.repository.saveAndFlush(surveyGroup)).thenReturn(surveyGroup);
+        //Mockito.when(this.repository.saveAndFlush(surveyGroup)).thenReturn(surveyGroup);
+        
+        //when(this.repository.persistAndFlush(surveyGroup)).thenReturn(surveyGroup);
 
         this.surveyService.createSurveyGroup(surveyGroup);
 
-        verify(this.repository).saveAndFlush(surveyGroup);
+        //verify(this.repository).saveandflush(surveyGroup);
+        verify(this.repository).persistAndFlush(surveyGroup);
     }
 
     @Test
@@ -61,7 +68,7 @@ public class SurveyServiceImplTest {
 
         SurveyGroup surveyGroup = new SurveyGroup();
 
-        Mockito.when(this.repository.saveAndFlush(surveyGroup)).thenReturn(surveyGroup);
+        //Mockito.when(this.repository.persistAndFlush(surveyGroup)).thenReturn(surveyGroup);
 
         this.surveyService.createSurveyGroup(surveyGroup);
 
@@ -72,7 +79,7 @@ public class SurveyServiceImplTest {
     public void shouldGetAllSurveyGroups() {
 
         this.surveyService.getSurveyGroups();
-        verify(this.repository).findAll();
+        verify(this.repository).listAll();
     }
 
     @Test
@@ -81,8 +88,8 @@ public class SurveyServiceImplTest {
         String guid = "234234234";
 
         SurveyGroup surveyGroup = new SurveyGroup();
-        Mockito.when(this.repository.findByGuid(guid)).thenReturn(surveyGroup);
-
+        //Mockito.when(this.repository.findByGuid(guid)).thenReturn(surveyGroup);
+        when(this.repository.findByGuid(guid)).thenCallRealMethod();
         SurveyGroup returned = this.surveyService.getSurveyGroup(guid);
         verify(this.repository).findByGuid(guid);
 

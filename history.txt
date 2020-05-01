@@ -1,0 +1,996 @@
+    1  whereis java
+    2  ls usr/bin/java
+    3  sudo ls usr/bin/java
+    4  sudo ls /usr/bin/java
+    5  sudo ls /usr/bin/java/
+    6  sudo ls /opt
+    7  sudo ls /etc/java
+    8  sudo ls /etc/java/java-1.8.0-openjdk/
+    9  sudo ls /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.242.b08-0.fc31.x86_64/
+   10  sudo ls /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.242.b08-0.fc31.x86_64/lib
+   11  sudo ls /opt/jdk-13/
+   12  sudo ls /opt/jdk-13/bin/
+   13  idea
+   14  sudo snap install intellij-idea-ultimate --classic
+   15  mvn clean install
+   16  ls
+   17  cd simple-calculator/
+   18  mvn clean install
+   19  java -version
+   20  $JAVA_HOME
+   21  echo $PATH
+   22  mvn clean install
+   23  whereis java
+   24  java -version
+   25  mvn -v
+   26  mvn clean install
+   27  $JAVA_HOME
+   28  intellij
+   29  sudo ln -s /var/lib/snapd/snap /snap
+   30  sudo snap install intellij-idea-ultimate --classic
+   31  intellij-idea-ultimate
+   32  sudo snap install intellij-idea-community --classic
+   33  intellij-idea-community
+   34  whereis java
+   35  sudo alternatives --config java
+   36  $JAVA_HOME
+   37  sudo vi /etc/profile
+   38  ls
+   39  simple-calculator-cucumber/
+   40  cd simple-calculator-cucumber/
+   41  ls
+   42  cd simple-calculator/
+   43  mvn clean install
+   44  cd ..
+   45  ls
+   46  cd consultant-360-appdev/
+   47  cd survey-spring-service/
+   48  mvn clean install
+   49  sudo alternatives --config java
+   50  mvn clean install
+   51  java -version
+   52  whereis java
+   53  sudo alternatives --config java
+   54  mvn clean install
+   55  whereis java
+   56  mvn clean install
+   57  sudo ls /etc
+   58  sudo vi /etc/environment
+   59  sudo vi /etc/profile
+   60  sudo vi ~/.profile
+   61  whereis java
+   62  sudo rm /opt/jdk-13
+   63  sudo rm -rf /opt/jdk-13
+   64  sudo ls /usr/bin/java
+   65  sudo ls /usr/bin/java/
+   66  sudo ls /usr/bin/java
+   67  sudo ls /etc/java
+   68  mvn clean install
+   69  ls /etc/java/java-1.8.0-openjdk
+   70  ls /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.242.b08-0.fc31.x86_64/
+   71  ls /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.242.b08-0.fc31.x86_64/lib
+   72  whereis java
+   73  java -version
+   74  which java
+   75  sudo ls /usr/bin/java
+   76  mvn clean install
+   77  $JAVA_HOME
+   78  vi ~/.bash_profile
+   79  mvn clean install
+   80  $JAVA_HOME
+   81  ls
+   82  cd consultant-360-appdev/
+   83  cd survey-spring-service/
+   84  $JAVA_HOME
+   85  source ~/.bash_profile
+   86  source /etc/profile
+   87  echo $JAVA_HOME
+   88  which java
+   89  vi ~/.bash_profile
+   90  export JAVA_HOME=/usr/bin/java
+   91  export PATH=$PATH:/usr/bin/java
+   92  echo $JAVA_HOME
+   93  java -version
+   94  whereis java
+   95  mvn clean install
+   96  whereis java
+   97  ls /usr/share/java
+   98  sudo mkdir -p /usr/local/java
+   99  whereis java
+  100  ls /usr/share/java
+  101  whereis java
+  102  which java
+  103  ls usr/bin/java
+  104  sudo usr/bin/java
+  105  sudo /usr/bin/java
+  106  sudo ls /usr/bin/java
+  107  java -version
+  108  alternatives --config java
+  109  ls /usr/java/jdk-13.0.2/bin/java
+  110  export JAVA_HOME=/usr/java/jdk-13.0.2/bin/java
+  111  export PATH=$PATH:JAVA_HOME
+  112  mvn clean install
+  113  which java
+  114  vi ~/.bash_profile
+  115  source ~/.bash_profile
+  116  which java
+  117  mvn clean install
+  118  which java
+  119  cd ..
+  120  cd Downloads
+  121  ls
+  122  sudo cp -r jdk-8u241-linux-x64.tar.gz /usr/java
+  123  cd /usr/java
+  124  sudo tar xvzf jdk-8u241-linux-x64.tar.gz
+  125  ls
+  126  vi ~/.bash_profile
+  127  java -version
+  128  sudo update-alternatives --install "/usr/java" "java" "/usr/local/java/jdk1.8.0_241/bin/java" 1
+  129  sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk1.8.0_241/bin/java" 1
+  130  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/jdk1.8.0_241/bin/javac" 1
+  131  sudo update-alternatives --set java /usr/java/jdk1.8.0_241/bin/java
+  132  source ~/.bash_profile
+  133  java -versio
+  134  java -version
+  135  echo JAVA_HOME
+  136  echo $JAVA_HOME
+  137  cd /Downloads
+  138  cd ~/.Downloads
+  139  cd ~/Downloads
+  140  ls
+  141  cd ..
+  142  ls
+  143  cd simple-calculator-cucumber/
+  144  ls
+  145  cd simple-calculator/
+  146  mvn clean install
+  147  java -version
+  148  cd consultant-360-appdev/
+  149  cd survey-spring-service/
+  150  java -version
+  151  mvn clean install
+  152  cd ~/.bash_profile
+  153  vi ~/.bash_profile
+  154  source ~/.bash_profile
+  155  mvn clean install
+  156  vi ~/.bash_profile
+  157  source ~/.bash_profile
+  158  vi ~/.bash_profile
+  159  source ~/.bash_profile
+  160  which java
+  161  ls /usr/bin/java
+  162  alternatives --config java
+  163  sudo alternatives --config java
+  164  which java
+  165  whereis java
+  166  java -version
+  167  echo $JAVA_HOME
+  168  mvn clean install
+  169  vi ~/.bash_profile
+  170  $JAVA_HOME/bin/javac -version
+  171  mvn clean install
+  172  mvn -version
+  173  maven -version
+  174  mvn -version
+  175  mvn clean install
+  176  source ~/.bash_profile
+  177  mvn clean install
+  178  mvn --version
+  179  vi ~/.bash_profile
+  180  source ~/.bash_profile
+  181  which java
+  182  mvn clean install
+  183  alternatives --config java
+  184  sudo alternatives --config java
+  185  mvn clean install
+  186  dnf search openjdk
+  187  sudo dnf install java-1.8.0-openjdk-src.x86_64
+  188  sudo alternatives --config java
+  189  java --versions
+  190  java --Versions
+  191  sudo java --Versions
+  192  java -version
+  193  mvn clean install
+  194  $JAVA_HOME=/usr/java/jdk1.8.0_241
+  195  setx $JAVA_HOME=/usr/java/jdk1.8.0_241
+  196  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/jdk1.8.0_241/bin/javac" 1
+  197  sudo update-alternatives --install "/usr/bin/javaws.itweb" "javaws.itweb" "/usr/local/java/jdk1.8.0_45/bin/javaws.itweb" 1
+  198  sudo update-alternatives --install "/usr/bin/javaws.itweb" "javaws.itweb" "/usr/java/jdk1.8.0_241/bin/javaws.itweb" 1
+  199  vi /etc/profile
+  200  sudo vi /etc/profile
+  201  source /etc/profile
+  202  java -version
+  203  mvn clean install
+  204  cd ..
+  205  cd simple-calculator-cucumber/
+  206  cd simple-calculator/
+  207  mvn clean install
+  208  java -version
+  209  source /etc/profile
+  210  cd /Downloads
+  211  cd /.Downloads
+  212  cd ~/Downloads
+  213  ls
+  214  ideaIC-community
+  215  idea
+  216  intellij-idea-community
+  217  cd usr/share/applications
+  218  sudo cd usr/share/applications
+  219  sudo cd ~/.local/share/applications/
+  220  ls
+  221  sudo cd /usr/share/applications/
+  222  cd ..
+  223  cd Desktop
+  224  ls
+  225  cd simple-calculator-cucumber/
+  226  cd  simple-calculator/
+  227  mvn clean install
+  228  sudo vi /etc/profile
+  229  java -version
+  230  mvn clean install
+  231  sudo update-alternatives --set java /usr/java/jdk1.8.0_241/bin/java
+  232  sudo update-alternatives --set javac /usr/java/jdk1.8.0_241/bin/javac
+  233  sudo update-alternatives --set javaws.itweb /usr/local/java/jdk1.8.0_45/bin/javaws.itweb
+  234  sudo update-alternatives --set javaws.itweb /usr/java/jdk1.8.0_241/bin/javaws.itweb
+  235  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/jdk1.8.0_241/bin/javac" 1
+  236  source /etc/profile
+  237  mvn clean install
+  238  reboot
+  239  cd simple-calculator-cucumber/
+  240  cd simple-calculator/
+  241  mvn clean install
+  242  sudo update-alternatives --set java /usr/java/jdk1.8.0_241/bin/java
+  243  mvn clean install
+  244  sudo update-alternatives --set java /usr/java/jdk1.8.0_241/bin/java
+  245  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/jdk1.8.0_241/bin/javac" 1
+  246  mvn clean install
+  247  sudo vi /etc/profile
+  248  sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk1.8.0_45/bin/java" 1
+  249  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/jdk1.8.0_45/bin/javac" 1
+  250  sudo update-alternatives --install "/usr/bin/javaws.itweb" "javaws.itweb" "/usr/java/jdk1.8.0_45/bin/javaws.itweb" 1
+  251  sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk1.8.0_241/bin/java" 1a
+  252  sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk1.8.0_241/bin/java" 1
+  253  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/jdk1.8.0_241/bin/javac" 1
+  254  sudo update-alternatives --install "/usr/bin/javaws.itweb" "javaws.itweb" "/usr/java/jdk1.8.0_241/bin/javaws.itweb" 1
+  255  sudo update-alternatives --set java /usr/java/jdk1.8.0_241/bin/java
+  256  sudo update-alternatives --set javac /usr/java/jdk1.8.0_241/bin/javac
+  257  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/jdk1.8.0_241/bin/javac" 1
+  258  sudo update-alternatives --set javac /usr/java/jdk1.8.0_241/bin/javac
+  259  sudo update-alternatives --set javaws.itweb /usr/java/jdk1.8.0_241/bin/javaws.itweb
+  260  source /etc/profile
+  261  reboot
+  262  cd simple-calculator-cucumber/
+  263  cd simple-calculator/
+  264  mvn clean install
+  265  sudo alternatives --config java
+  266  mvn clean install
+  267  cd ..
+  268  cd Downloads
+  269  ls
+  270  sudo cp -r jdk-8u241-linux-x64.tar.gz /usr/local/java
+  271  cd /usr/local/java
+  272  sudo tar xvzf jdk-8u45-linux-x64.tar.gz
+  273  sudo tar xvzf jdk-8u241-linux-x64.tar.gz
+  274  sudo vi /etc/profile
+  275  sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.8.0_45/bin/java" 1
+  276  sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.8.0_241/bin/java" 1
+  277  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.8.0_241/bin/javac" 1
+  278  sudo update-alternatives --install "/usr/bin/javaws.itweb" "javaws.itweb" "/usr/local/java/jdk1.8.0_241/bin/javaws.itweb" 1
+  279  sudo update-alternatives --set java /usr/local/java/jdk1.8.0_241/bin/java
+  280  sudo update-alternatives --set javac /usr/local/java/jdk1.8.0_241/bin/javac
+  281  sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.8.0_241/bin/javac" 1
+  282  sudo update-alternatives --set javac /usr/local/java/jdk1.8.0_241/bin/javac
+  283  sudo update-alternatives --set javaws.itweb /usr/local/java/jdk1.8.0_241/bin/javaws.itweb
+  284  source /etc/profile
+  285  cd ..
+  286  cd /Downloads
+  287  cd ~/Downloads
+  288  cd ~
+  289  cd simple-calculator-cucumber/
+  290  cd simple-calculator/
+  291  mvn clean install
+  292  reboot
+  293  cd s
+  294  cd simple-calculator-cucumber/
+  295  cd simple-calculator/
+  296  mvn clean install
+  297  echo $JAVA_HOME
+  298  sudo vi /.bash_profile
+  299  sudo vi ~/.bash_profile
+  300  export JAVA_HOME=/usr/java/jdk1.8.0_241
+  301  echo $JAVA_HOME
+  302  export PATH=$PATH:$JAVA_HOME/bin
+  303  java -version
+  304  mvn clean install
+  305  source
+  306  reboot
+  307  echo $JAVA_HOME
+  308  sudo vi /etc/profile
+  309  sudo vi /.bashrc
+  310  sudo vi $HOME/.bashrc
+  311  echo $PATH
+  312  grep "/opt/jdk-13” /
+  313  sudo grep "/opt/jdk-13” /etc
+  314  sudo grep "/opt/jdk-13” /*
+  315  sudo grep -R "/opt/jdk-13" /*
+  316  sudo grep -r "/opt/jdk-13" /etc/*
+  317  sudo vi /etc/profile.d
+  318  sudo ls /etc/profile.d
+  319  sudo vi /etc/profile.d/jdk13.sh
+  320  sudo rm /etc/profile.d/jdk13.sh
+  321  reboot
+  322  cd simple-calculator-cucumber/
+  323  cd simple-calculator/
+  324  echo $JAVA_HOME
+  325  mvn clean install
+  326  sudo vi ~/.bashrc
+  327  echo $PATH
+  328  sudo ls /etc/profile.d
+  329  sudo vi /etc/profile.d/sh.local
+  330  sudo vi /.bashrc
+  331  sudo touch /etc/profile.d/java.sh
+  332  sudo vi /etc/profile.d/java.sh
+  333  source /etc/profile.d/java.sh
+  334  mvn clean install
+  335  reboot
+  336  mvn clean install
+  337  ls
+  338  git status
+  339  ls target
+  340  java -jar survey-spring-service-1.0.0.jar
+  341  java -jar target/survey-spring-service-1.0.0.jar
+  342  docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=test_user -e POSTGRES_DB=surveydb -d postgres
+  343  sudo docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=test_user -e POSTGRES_DB=surveydb -d postgres
+  344  mvn clean installsudo docker ps
+  345  sudo docker ps
+  346  mvn spring-boot:run
+  347  sudo docker ps
+  348  git status
+  349  git stash
+  350  git pull
+  351  git branch ai70-putSurveyGroup
+  352  git status
+  353  git branch
+  354  git checkout ai70-putSurveyGroup 
+  355  mvn clean install
+  356  git pull
+  357   git branch --set-upstream-to=origin/<branch> ai70-putSurveyGroup
+  358   git branch --set-upstream-to=origin/ai70-putSurveyGroup ai70-putSurveyGroup
+  359  git fetch
+  360  git branch
+  361  git pull
+  362  git branch --set-upstream-to=origin/ai70-putSurveyGroup ai70-putSurveyGroup
+  363  git branch --set-upstream-to=ai70-putSurveyGroup ai70-putSurveyGroup
+  364  git pull
+  365  git branch -b  ai70clone-putSurveyGroup
+  366  git checkout  branch -b  ai70clone-putSurveyGroupTesting
+  367  git checkout -b  ai70clone-putSurveyGroupTesting
+  368  git status
+  369  git merge ai170-putSurveyGroup
+  370  git merge ai170-origin/putSurveyGroup
+  371  git pull ai170-origin/putSurveyGroup
+  372  git checkout origin/ai170-putSurveyGroup
+  373  git switch -c  origin/ai170-putSurveyGroup
+  374  git pull
+  375  git branch --set-upstream-to=origin/ai170-putSurveyGroup
+  376  git branch --set-upstream-to=origin/ai170-putSurveyGroup ai170-putSurveyGroup
+  377  git branch --set-upstream-to=origin/ai170-putSurveyGroupo origin/ai170-putSurveyGroup
+  378  git fetch
+  379  git status
+  380  mvn clean install
+  381  git branch
+  382  git branch -d ai70clone-putSurveyGroupTesting 
+  383  git branch -D ai70clone-putSurveyGroupTesting 
+  384  git branch -D ai70-putSurveyGroup 
+  385  git checkout -b ai170clone-putSurveyGroupTesting
+  386  git merge origin/ai170-putSurveyGroup
+  387  mvn clean install
+  388  eclipse
+  389  eclipse-platform
+  390  pwd
+  391  $JAVA_HOME
+  392  ls /usr/local/java/jdk1.8.0_241
+  393  ext install Pivotal.vscode-boot-dev-pack
+  394  whereis java
+  395  which java
+  396  java -version
+  397  sudo ls /usr/bin/java
+  398  sudo ls /usr/lib
+  399  sudo ls /usr/lib/java
+  400  $JAVA_HOME
+  401  ls /etc
+  402  sudo vi /etc/profile.d
+  403  sudo ls /etc/profile.d
+  404  sudo ls /etc/profile.d/java.sh
+  405  sudo vi /etc/profile.d/java.sh
+  406  which javac
+  407  sudo ls /usr/local/java/jdk1.8.0_241/bin/java
+  408  sudo ls /usr/local/java/jdk1.8.0_241/bin
+  409  sudo ls /usr/local/java/jdk1.8.0_241
+  410  sudo ls /usr/local/java/jdk1.8.0_241/lib
+  411  whereis java
+  412  sudo ls /etc/profile.d/java.sh
+  413  sudo vi /etc/profile.d/java.sh
+  414  which javac
+  415  which java
+  416  whereis java
+  417  ls /usr/local/java
+  418  ls /usr/local/java/jdk1.8.0_241
+  419  lstat /usr/java/jdk-1.8.0_241
+  420  whereis java
+  421  ls usr/share.java
+  422  ls usr/share/java
+  423  ls /usr/share/java
+  424  which java
+  425  ls /usr/bin/java
+  426  cd ~/Downloads
+  427  ls
+  428  sudo dnf install java-1.8.0-openjdk-devel
+  429  sudo dnf install eclipse-jdt
+  430  sudo dnf install eclipse-jdt --skip-broken
+  431  sudo alternatives --config java
+  432  which java
+  433  whereis java
+  434  ls /etc/java
+  435  ls /etc/java/java-1.8.0-openjdk
+  436  ls /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.242.b08-0.fc31.x86_64
+  437  ls /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.242.b08-0.fc31.x86_64/lib
+  438  ls /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.242.b08-0.fc31.x86_64/lib/security
+  439  whereis java
+  440  $JAVA_HOME
+  441  echo $JAVA_HOME
+  442  echo JAVA_HOME
+  443  echo $JAVA_HOME
+  444  whereis java
+  445  alternatives --config java
+  446  mvn clean install
+  447  cd ..
+  448  ls
+  449  cd consultant-360-appdev/
+  450  ls
+  451  cd survey-spring-service/
+  452  ls
+  453  cd target
+  454  ls
+  455  cd ..
+  456   mvn spring-boot:run
+  457  sudo docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=sa -e POSTGRES_DB=surveydb -d postgres
+  458   mvn spring-boot:run
+  459  git branch
+  460  cd ..
+  461  ls
+  462  cd consultant-360-appdev/
+  463  ls
+  464  cd survey-spring-service/
+  465  mvn clean install
+  466  echo $PATH
+  467  java -version
+  468  git branch
+  469  git pull
+  470  mvn clean install
+  471  sudo docker ps
+  472  git branch
+  473  sudo docker ps
+  474  sudo docker container kill priceless_haibt
+  475  docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=sa -e POSTGRES_DB=surveydb -d postgres
+  476  sudo docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=sa -e POSTGRES_DB=surveydb -d postgres
+  477  ls target
+  478  java -jar target/survey-spring-service-1.0.0.jar
+  479  sudo docker ps
+  480  sudo docker container kill awesome_bartik
+  481  sudo vi /etc/profile.d/java.sh
+  482  eclipse-jdt
+  483  eclipse
+  484  ls ~/Desktop
+  485  sudo Desktop
+  486  cd /Desktop
+  487  cd ~/Desktop
+  488  ls
+  489  ls ~/etc
+  490  ls /etc
+  491  ls /opt
+  492  ls /usr
+  493  ls /usr/local
+  494  cd ~/Downloads
+  495  ls
+  496  ls /usr/share/application
+  497  ls ~/usr/share/application
+  498  ls ~/usr/share/applications
+  499  ls /usr/share/applications
+  500  eclipse.desktop
+  501  /usr/share/applications/eclipse.desktop
+  502  sudo /usr/share/applications/eclipse.desktop
+  503  intellij-idea-community
+  504  cd simple-calculator-cucumber/
+  505  cd simple-calculator/
+  506  mvn clean install
+  507  git status
+  508  cd Downloads
+  509  ls
+  510  eclipse
+  511  cd eclipse
+  512  ls
+  513  eclipse
+  514  cd ..
+  515  cd .
+  516  cd ..
+  517  ls
+  518  cd consultant-360-appdev/
+  519  ls
+  520  cd survey-spring-service/
+  521  mvn clean install
+  522  git status
+  523  git checkout modified:   src/test/java/com/appdevcoe/feedback360/survey/service/SurveyServiceImplTest.java
+  524  git checkout src/test/java/com/appdevcoe/feedback360/survey/service/SurveyServiceImplTest.java
+  525  git checkout src/test/java/com/appdevcoe/feedback360/survey/controller/SurveyControllerIntegrationTest.java
+  526  git status
+  527  git checkout src/main/java/com/appdevcoe/feedback360/survey/service/SurveyServiceImpl.java
+  528  git status
+  529  git stash
+  530  git status
+  531  whereis java
+  532  which java
+  533  java -version
+  534  git checkout master
+  535  git pull
+  536  git branch
+  537  git checkout ai170clone-putSurveyGroupTesting
+  538  git branch
+  539  git merge origin/ai170-putSurveyGroup
+  540  git checkout origin/ai170-putSurveyGroup
+  541  git branch
+  542   ai170clone-putSurveyGroupTesting
+  543  git checkout  ai170clone-putSurveyGroupTesting
+  544  mvn clean install
+  545  git status
+  546  git stash
+  547  git branch
+  548  git status
+  549  ls
+  550  git status
+  551  git branch
+  552  git status
+  553  mvn clean install
+  554  git commit -m "Add SurveyControllerIntegrationTests"
+  555  git add .
+  556  git commit -m "Add SurveyControllerIntegrationTests"
+  557  git push
+  558  git push --set-upstream origin ai170clone-putSurveyGroupTesting
+  559  mvn clean install
+  560  git status
+  561  git add .
+  562  git commit -m "Adding Evan's refactored SurveyGroupResource code"
+  563  git push
+  564  git status
+  565  git pull
+  566  mvn clean install
+  567  git status
+  568  git stash src/test/java/com/appdevcoe/feedback360/survey/controller/SurveyControllerTest.java
+  569  git status
+  570  git add .
+  571  mvn clean install
+  572  git status
+  573  git add .
+  574  git commit -m "Add not found exception for PUT"
+  575  git push
+  576  git status
+  577  mvn clean install
+  578  git status
+  579  git add .
+  580  git commit -m "More test changes to cover NotFound error for PUT"
+  581  git push
+  582  git status
+  583  git add .
+  584  git commit -m "Remove SurveyServiceImpl change"
+  585  git push
+  586  mvn clean install
+  587  git pull
+  588  mvn clean install 
+  589  oc 
+  590  sudo dnf config-manager --set-enabled google-chrome
+  591  sudo dnf install google-chrome-stable
+  592  eclipse.desktop
+  593  cd ..
+  594  cd .
+  595  cd ..
+  596  cd Downloads
+  597  ls
+  598  cd eclipse/
+  599  ls
+  600  eclipse.exe
+  601  eclipse
+  602  ls
+  603  cd ..
+  604  ls
+  605  cd consultant-360-appdev/
+  606  ls
+  607  cd survey-spring-service/
+  608  ls
+  609  java -jar target/survey-spring-service-1.0.0.jar
+  610  sudo docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=test_user -e POSTGRES_DB=surveydb -d postgres
+  611  java -jar target/survey-spring-service-1.0.0.jar
+  612  sudo docker ps
+  613  sudo docker kill complete_lumiere
+  614  sudo docker kill competent_lumiere
+  615  java -jar target/survey-spring-service-1.0.0.jar
+  616  sudo docker ps
+  617  java -jar target/survey-spring-service-1.0.0.jar
+  618  mvn -version
+  619  cd ..
+  620  ls
+  621  cd quarkus_tutorials/
+  622  ls
+  623  cd quarkus-quickstarts/
+  624  ls
+  625  cd spring-web-quickstart/
+  626  ls
+  627  mvn clean install
+  628  ./mvnw compile quarkus:dev
+  629  sudo dnf install alacarte
+  630  sudo ls /usr/share/applications
+  631  sudo mv ~/.local/share/applications/eclipse.desktop /usr/share/applications
+  632  sudo dnf install origin-clients docker
+  633  docker
+  634  sudo dnf install minishift
+  635  sudo dnf install openshift
+  636  ls
+  637  git clone https://github.com/oveits/install-openshift-on-fedora
+  638  cd install-openshift-on-fedora/
+  639  bash 0_enable_selinux.sh
+  640  bash 1_install_all.sh
+  641  sudo bash 1_install_all.sh
+  642  oc login
+  643  oc
+  644  sudo dnf install ansible
+  645  ansible
+  646  oc version
+  647  cd ..
+  648  ls
+  649  cd consultant-360-appdev/
+  650  ls
+  651  cd survey-spring-service/
+  652  ls
+  653  git status
+  654  git pull
+  655  oc login --token=6VoWFYS69on1RPFzpUBlO4_9WL1aZQ_L_FO18LMBlaA --server=https://api.cluster-6f6c.6f6c.sandbox659.opentlc.com:6443
+  656  clear
+  657  cd ..
+  658  ls
+  659  oc
+  660  oc get projects
+  661  clear
+  662  oc version
+  663  git clone https://gitlab.consulting.redhat.com/appdev-coe/service-mesh/service-mesh-installation.git
+  664  cd service-mesh-installation/
+  665  ansible-galaxy install -r requirements.yml -p roles
+  666  ansible-playbook site.yml -i inventory/hosts -l bootstrap 
+  667  sudo yum install origin-client
+  668  sudo dnf install origin-client
+  669  cd /Downloads
+  670  cd /usr/bin
+  671  ls
+  672  ln ~/Downloads/oc oc
+  673  ln -s ~/Downloads/oc oc
+  674  sudo ln -s ~/Downloads/oc oc
+  675  sudo mkdir -p ~/.local/bin && mv ~/Downloads/oc ~/.local/bin
+  676  sudo sudo mkdir -p ~/.local/bin && mv ~/Downloads/oc ~/.local/bin
+  677   mkdir -p ~/.local/bin && mv ~/Downloads/oc ~/.local/bin
+  678  sudo  mkdir -p ~/.local/bin && mv ~/Downloads/oc ~/.local/bin
+  679  sudo chown rassmith:rassmith ~/.local/bin
+  680  sudo  mkdir -p ~/.local/bin && mv ~/Downloads/oc ~/.local/bin
+  681  export PATH="$HOME/.local/bin:$PATH"
+  682  oc -version
+  683  oc
+  684  file ~/.local/bin/oc
+  685  file `which oc`
+  686  ls -l 
+  687  oc -version
+  688  file `which oc`
+  689  ls -l ~/.local/bin/oc
+  690  ls ~/.local/bin/oc
+  691  uname -a
+  692  cd ~/Downloads
+  693  ls
+  694  clear
+  695  sudo yum install origin-clients
+  696  sudo yum update origin-clients
+  697  oc -version
+  698  oc
+  699  oc version
+  700  oc 
+  701  cd ~/Downloads && curl https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.1/linux/oc.tar.gz | tar x && mv oc ~/.local/bin/oc
+  702  cd ~/Downloads && curl https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.1/linux/oc.tar.gz | tar zx && mv oc ~/.local/bin/oc
+  703  oc version
+  704  ansible-playbook site.yml -i inventory/hosts -l bootstrap 
+  705  cd ~
+  706  ls
+  707  cd service-mesh-installation/
+  708  ansible-playbook site.yml -i inventory/hosts -l bootstrap 
+  709  ansible-playbook site.yml -i inventory/hosts -l istio-operator 
+  710  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  711  oc get projects | grep istio
+  712  oc adm new-project istio-system
+  713  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  714  cd ..
+  715  git clone https://gitlab.consulting.redhat.com/appdev-coe/service-mesh/ocp-foundation-service-mesh
+  716  oc adm new-project appdev-demo
+  717  cd partner/kubernetes
+  718  cd ocp-foundation-service-mesh/
+  719  cd partner/kubernetes
+  720  oc apply -f partner-service-template.yml -n appdev-demo
+  721  oc apply -f service.yml -n appdev-demo
+  722  ls
+  723  oc apply -f Service.yml -n appdev-demo
+  724  cd partner/kubernetes
+  725  ls
+  726  cd ..
+  727  ls
+  728  cd .
+  729  cd ..
+  730  ls
+  731  cd catalog/kubernetes
+  732  oc apply -f catalog-service-template.yml -n appdev-demo
+  733  oc apply -f service.yml -n appdev-demo
+  734  ls
+  735  oc apply -f Service.yml -n appdev-demo
+  736  cd ..
+  737  cd gateway/kubernetes
+  738  oc apply -f gateway-service-template.yml -n appdev-demo
+  739  oc apply -f Service.yml -n appdev-demo
+  740  oc get pods
+  741  oc get pods -n appdev-demo
+  742  oc apply -f service-mesh-gateway.yml -n appdev-demo
+  743  ls
+  744  cd ..
+  745  ls
+  746  cd gateway
+  747  ls
+  748  cd ..
+  749  ls
+  750  cd service-mesh-installation/
+  751  ls
+  752  cd templates
+  753  ls
+  754  oc apply -f service-mesh-gateway.yml -n appdev-demo
+  755  GATEWAY_URL=$(oc get route istio-ingressgateway -o jsonpath='{.spec.host}')
+  756  curl $GATEWAY_URL
+  757  GATEWAY_URL=$(oc get route istio-ingressgateway -o jsonpath='{.spec.host}')
+  758  ls
+  759  GATEWAY_URL=$(oc get route istio-ingressgateway -n istio-system -o jsonpath='{.spec.host}')
+  760  echo $GATEWAY_URL
+  761  curl $GATEWAY_URL
+  762  oc get route kiali -n istio-system -o jsonpath='{.spec.host}'
+  763  oc get pods
+  764  oc get pods -n appdev-demo
+  765  oc get route kiali -n istio-system -o jsonpath='{.spec.host}'
+  766  oc get svc -n istio-system
+  767  oc expose svc/kiali
+  768  oc expose -n istio-system svc/kiali
+  769  oc get svc -n istio-system
+  770  for i in $(seq 50) ; do curl  $GATEWAY_URL; sleep 1 ; done
+  771  oc get route -n istio-system
+  772  ls
+  773  cd ..
+  774  ls
+  775  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  776  ls
+  777  cd templates/
+  778  ls
+  779  vi service-mesh-member-roll.yml 
+  780  cd ..
+  781  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  782  cd templates/
+  783  ls
+  784  oc get ServiceMeshMemberRoll -n istio-system
+  785  oc delete project istio-system
+  786  cd ..
+  787  ansible-playbook site.yml -i inventory/hosts -l bootstrap 
+  788  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  789  cd ..
+  790  oc login --token=2t_gGWIIOEYBiGb5MfBRBBquGN15geGOckKOiZePPNg --server=https://api.cluster-5528.5528.sandbox1383.opentlc.com:6443
+  791  oc get projects
+  792  ls
+  793  cd service-mesh-installation/
+  794  ls
+  795  cd templates/
+  796  ls
+  797  vi service-mesh-member-roll.yml 
+  798  cd ..
+  799  ls
+  800  ansible-galaxy install -r requirements.yml -p roles
+  801  ansible-playbook site.yml -i inventory/hosts -l bootstrap 
+  802  ansible-playbook site.yml -i inventory/hosts -l istio-operator 
+  803  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  804  ansible-galaxy install -r requirements.yml -p roles
+  805  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  806  oc delete project istio-system
+  807  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  808  ansible-playbook site.yml -i inventory/hosts -l bootstrap 
+  809  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  810  oc delete istio-operator
+  811  oc delete project istio-system
+  812  oc get ServiceMeshMemberRoll -n istio-system
+  813  oc get ServiceMeshContolPlane -n istio-system
+  814  oc get ServiceMeshControlPlane -n istio-system
+  815  oc version
+  816  clear
+  817  oc login --token=JNdAL36VXm5coRGvmIdkEGfj8mryO5MoBrgLMx7FhTM --server=https://api.cluster-9936.9936.sandbox1202.opentlc.com:6443
+  818  cd ..
+  819  ls
+  820  cd service-mesh-installation/
+  821  ls
+  822  ansible-galaxy install -r requirements.yml -p roles
+  823  ansible-playbook site.yml -i inventory/hosts -l bootstrap 
+  824  ansible-playbook site.yml -i inventory/hosts -l istio-operator 
+  825  ansible-playbook site.yml -i inventory/hosts -l istio-system
+  826  ls
+  827  cd ..
+  828  ls
+  829  cd ocp-foundation-service-mesh/
+  830  ls
+  831  oc adm new-project appdev-demo
+  832  ls
+  833  oc apply -f partner/kubernetes/partner-service-template.yml -n appdev-demo
+  834  oc apply -f partner/kubernetes/Service.yml -n appdev-demo
+  835  oc apply -f catalog/kubernetes/catalog-service-template.yml -n appdev-demo
+  836  oc apply -f catalog/kubernetes/Service.yml -n appdev-demo
+  837  oc apply -f gateway/kubernetes/gateway-service-template.yml -n appdev-demo
+  838  oc apply -f gateway/kubernetes/Service.yml -n appdev-demo
+  839  oc get pods -n appdev-demo -w
+  840  oc get pods 
+  841  oc get pods -n appdev-demo -w
+  842  ls
+  843  cd ~/service-mesh-installation
+  844  oc apply -f templates/service-mesh-gateway.yml -n appdev-demo
+  845  GATEWAY_URL=$(oc get route -n istio-system istio-ingressgateway -o jsonpath='{.spec.host}')
+  846  curl $GATEWAY_URL
+  847  oc get route -n istio-system kiali -o jsonpath='{.spec.host}'
+  848  for i in $(seq 50) ; do curl  $GATEWAY_URL; sleep 1 ; done
+  849  cd catalog-v2/kubernetes
+  850  ls
+  851  cd ..
+  852  ls
+  853  cd service-mesh-installation/
+  854  ls
+  855  cd ..
+  856  cd ocp-foundation-service-mesh/
+  857  ls
+  858  cd catalog-v2
+  859  oc apply -f catalog-service-template.yml -n appdev-demo
+  860  ls
+  861  cd kubernetes
+  862  oc apply -f catalog-service-template.yml -n appdev-demo
+  863  oc apply -f Service.yml -n appdev-demo
+  864  ls
+  865  for i in $(seq 50) ; do curl  $GATEWAY_URL; sleep 1 ; done
+  866  oc apply -f ./istiofiles/destination-rule-catalog-v1-v2.yml
+  867  ls
+  868  cd ..
+  869  ls
+  870  cd ..
+  871  ls
+  872  oc apply -f ./istiofiles/destination-rule-catalog-v1-v2.yml
+  873  oc apply -f ./istiofiles/virtual-service-catalog-v1_and_v2.yml
+  874  for i in $(seq 50) ; do curl  $GATEWAY_URL; sleep 1 ; done
+  875  vi ./istiofiles/virtual-service-catalog-v1_and_v2.yml
+  876  vi ./istiofiles/destination-rule-catalog-v1-v2.yml
+  877  oc apply -f ./istiofiles/virtual-service-catalog-v1_and_v2.yml -n appdev-demo
+  878  vi ./istiofiles/destination-rule-catalog-v1-v2.yml -n appdev-demo
+  879  oc apply -f ./istiofiles/destination-rule-catalog-v1-v2.yml -n appdev-demo
+  880  for i in $(seq 50) ; do curl  $GATEWAY_URL; sleep 1 ; done
+  881  ls
+  882  cd istiofiles/
+  883  ls
+  884  history
+  885  cd ..
+  886  history >> testHistory.txt
+  887  ls
+  888  cat testHistory.txt
+  889  java -version
+  890  mvn -v
+  891  docker -version
+  892  docker run hello-world
+  893  sudo docker run hello-world
+  894  kubectl
+  895  sudo dnf install gcc glibc-devel zlib-devel
+  896   $GRAALVM_HOME/bin/native-image --version
+  897  docker-compose version
+  898  mkdir quarkus_tutorials
+  899  cd quarkus_tutorials/
+  900  git clone https://github.com/quarkusio/quarkus-quickstarts.git
+  901  ls
+  902  mvn io.quarkus:quarkus-maven-plugin:1.3.1.Final:create     -DprojectGroupId=org.acme     -DprojectArtifactId=getting-started     -DclassName="org.acme.getting.started.GreetingResource"     -Dpath="/hello"
+  903  mvn version
+  904  mvn -version
+  905  sudo alternatives --config mvn
+  906  whereis mvn
+  907  mvn --version
+  908  sudo ls /usr/share/maven/bin/mvn
+  909  whereis java
+  910  sudo ls /etc
+  911  sudo ls /etc/profil
+  912  sudo ls /etc/profile
+  913  sudo vi /etc/profile.d
+  914  find *.sh
+  915  find . -type f -name \*.sh
+  916  sudo find . | grep *\.sh
+  917  sudo ls /etc/profile
+  918  sudo ls /etc/profile/
+  919  ls /etc/profile.d/
+  920  sudo vi /etc/profile.d/java.sh
+  921  whereis maven
+  922  whereis mvn
+  923  export VER="3.6.2"
+  924  curl -O http://www-eu.apache.org/dist/maven/maven-3/${VER}/binaries/apache-maven-${VER}-bin.tar.gz
+  925  ls
+  926  mv apache-maven-3.6.2-bin.tar.gz ~/Downloads
+  927  ls
+  928  cd ~/Downloads
+  929  ls
+  930  cd eclipse
+  931  ls
+  932  eclipse
+  933  cd ..
+  934  ls
+  935  cd consultant-360-appdev/
+  936  ls
+  937  cd survey-spring-service/
+  938  s
+  939  ls
+  940  cd ..
+  941  ls
+  942  cd ..
+  943  git clone https://gitlab.consulting.redhat.com/appdev-coe/consultant-360-feedback/test-platform.git
+  944  git status
+  945  ls
+  946  cd test-platform/
+  947  ls
+  948  git status
+  949  mvn clean install
+  950  git status
+  951  git stash
+  952  git status
+  953  ls
+  954  git branch ai232-editSurveyGroup
+  955  git status
+  956  git branch
+  957  git checkout ai232-editSurveyGroup
+  958  git checkout -b ai232-editSurveyGroup
+  959  git checkout ai232-editSurveyGroup
+  960  git status
+  961  oc get projects
+  962  ls
+  963  clear
+  964  sudo dnf install sublime-text
+  965  sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+  966  sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+  967  sudo dnf install sublime-text
+  968  sublime
+  969  sublime-text
+  970  ./mvnw quarkus:dev
+  971  cd ~
+  972  git clone https://github.com/edeandrea/kraken-demo.git
+  973  cd kraken-demo/
+  974  docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0            --name quarkus_test -e POSTGRES_USER=quarkus_test            -e POSTGRES_PASSWORD=quarkus_test -e POSTGRES_DB=quarkus_test            -p 5432:5432 postgres:10.5
+  975  sudo docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0            --name quarkus_test -e POSTGRES_USER=quarkus_test            -e POSTGRES_PASSWORD=quarkus_test -e POSTGRES_DB=quarkus_test            -p 5432:5432 postgres:10.5
+  976  docker ps
+  977  sudo docker ps
+  978  docker kill lucid_driscoll
+  979  sudo docker kill lucid_driscoll
+  980  sudo docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0            --name quarkus_test -e POSTGRES_USER=quarkus_test            -e POSTGRES_PASSWORD=quarkus_test -e POSTGRES_DB=quarkus_test            -p 5432:5432 postgres:10.5
+  981  curl http://0.0.0.0:8080/tweets/coronavirus
+  982  ./mvnw quarkus:dev
+  983  cd ..
+  984  ls
+  985  cd kafka-streams-quickstart
+  986  sudo ./mvnw clean package -f producer/pom.xml -Pnative -Dnative-image.container-runtime=docker
+  987  ./mvnw clean package -f aggregator/pom.xml
+  988  docker-compose stop aggregator
+  989  sudo docker-compose stop aggregator
+  990  ./mvnw clean package -f producer/pom.xml
+  991  ./mvnw clean package -U -f producer/pom.xml
+  992  sudo ./mvnw clean package -f producer/pom.xml
+  993  sudo docker run --tty --rm -i --network ks debezium/tooling:1.0
+  994  cd ..
+  995  sudo docker ps
+  996  history > history.txt

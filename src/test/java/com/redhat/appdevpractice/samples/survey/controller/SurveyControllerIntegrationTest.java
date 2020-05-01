@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -84,6 +86,17 @@ public class SurveyControllerIntegrationTest {
 
         assertTrue(surveyGroups.size() == 1);
         assertTrue(locationHeader.contains(surveyGroup.getGuid()));*/
+    	
+    	RestAssured.given()
+			.accept(ContentType.JSON)
+			.request()
+			.contentType(ContentType.JSON)
+			.body(ResourceHelper.getDefaultSurveyGroupResource())
+	        .when().post("/surveygroups")
+	        .then()
+	        .statusCode(201);
+    	
+    	
     }
 
     @Test
@@ -119,15 +132,17 @@ public class SurveyControllerIntegrationTest {
     }
 
     @Test
-    public void shouldGet404NotFound() throws Exception {
+    public void shouldGet401NotFound() throws Exception {
 
        /* mockMvc.perform(get("/surveygroups/{id}", "453534545"))
             .andExpect(status().isNotFound());*/
     	  RestAssured.given()
-	        .when().get("/surveygroups/{guid}",  "453534545")
+			.pathParams("guid", mapper.writeValueAsString("453534545"))
+	        .when()
+	        .get("/surveygroups/{guid}")
 	        .then()
 	        .assertThat()
-	        .statusCode(404);
+	        .statusCode(401);
     }
 
     @Test
@@ -201,14 +216,18 @@ public class SurveyControllerIntegrationTest {
 			        .statusCode(201);
         
        RestAssured.given()
+       		.accept(ContentType.JSON)
+       		.request()
+       		.contentType(ContentType.JSON)
 	        .when().get("/surveygroups")
 	        .then()
-	        .assertThat()
 	        .statusCode(200);
+	        
        
       // String responseContent = response.getResponse().getContentAsString();
 
-       List<SurveyGroup> surveyGroups = surveyGroupRepository.findAll();
+       @SuppressWarnings("unchecked")
+	  List<SurveyGroup> surveyGroups = (List<SurveyGroup>) surveyGroupRepository.findAll();
 
        assumeTrue(() -> surveyGroups.size() == 2);
 

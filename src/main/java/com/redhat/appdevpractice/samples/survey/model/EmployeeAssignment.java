@@ -12,8 +12,10 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 @Entity
-public class EmployeeAssignment {
+public class EmployeeAssignment extends PanacheEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -5,10 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+
 import com.redhat.appdevpractice.samples.survey.model.Skill;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.mockito.InjectMock;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +23,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 //@DataJpaTest
 //@ActiveProfiles("test")
+@Transactional
 @QuarkusTest
 public class SurveyGroupRepositoryIntegrationTest {
 
-    @Autowired
+    @Inject
     private SurveyGroupRepository surveyGroupRepository;
 
     @Test
@@ -29,9 +36,11 @@ public class SurveyGroupRepositoryIntegrationTest {
         SurveyGroup surveyGroup = new SurveyGroup();
         surveyGroup.setGuid("guid123");
 
-        surveyGroup = this.surveyGroupRepository.saveAndFlush(surveyGroup);
-        assertNotNull(surveyGroup.getId());
-        assertTrue(surveyGroup.getGuid().equals("guid123"));
+        //surveyGroup = this.surveyGroupRepository.persistAndFlush(surveyGroup);
+        this.surveyGroupRepository.persistAndFlush(surveyGroup);
+        SurveyGroup sg = surveyGroupRepository.findByGuid("guid123");
+        //assertNotNull(sg.getId());
+        assertTrue(sg.getGuid().equals("guid123"));
     }
 
     @Test
@@ -45,7 +54,7 @@ public class SurveyGroupRepositoryIntegrationTest {
         SurveyGroup surveyGroup = new SurveyGroup();
         surveyGroup.setGuid("guid123");
 
-        this.surveyGroupRepository.saveAndFlush(surveyGroup);
+        this.surveyGroupRepository.persistAndFlush(surveyGroup);
         
         assertNotNull(this.surveyGroupRepository.findByGuid("guid123"));
     }
@@ -63,9 +72,15 @@ public class SurveyGroupRepositoryIntegrationTest {
         hogwarts.setGuid("hogwarts");
         hogwarts.getSkillsUsed().add(tdd);
 
-        nasa = this.surveyGroupRepository.saveAndFlush(nasa);
-        hogwarts = this.surveyGroupRepository.saveAndFlush(hogwarts);
-
+       // nasa = this.surveyGroupRepository.saveAndFlush(nasa);
+       // hogwarts = this.surveyGroupRepository.saveAndFlush(hogwarts);
+        
+        this.surveyGroupRepository.persistAndFlush(nasa);
+        this.surveyGroupRepository.persistAndFlush(hogwarts);
+        
+        List<SurveyGroup> hogwarts1 = this.surveyGroupRepository.listAll();
+        
+        
         assertEquals(nasa.getSkillsUsed().get(0), hogwarts.getSkillsUsed().get(0));
     }
 
@@ -82,8 +97,8 @@ public class SurveyGroupRepositoryIntegrationTest {
         hogwarts.setGuid("hogwarts");
         hogwarts.getSkillsUsed().add(tdd);
 
-        this.surveyGroupRepository.saveAndFlush(nasa);
-        this.surveyGroupRepository.saveAndFlush(hogwarts);
+        this.surveyGroupRepository.persistAndFlush(nasa);
+        this.surveyGroupRepository.persistAndFlush(hogwarts);
 
         this.surveyGroupRepository.deleteByGuid("nasa");
 

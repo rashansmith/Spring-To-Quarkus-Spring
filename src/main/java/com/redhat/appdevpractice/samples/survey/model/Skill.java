@@ -5,8 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 @Entity
-public class Skill {
+public class Skill extends PanacheEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
