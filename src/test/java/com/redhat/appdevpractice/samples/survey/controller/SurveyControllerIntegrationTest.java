@@ -28,6 +28,7 @@ import io.quarkus.test.junit.QuarkusMock;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import com.redhat.appdevpractice.samples.survey.controller.TransactionalQuarkusTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,6 +46,7 @@ import org.springframework.transaction.annotation.Transactional;*/
 //@SpringBootTest
 //@AutoConfigureMockMvc
 //@ActiveProfiles("test")
+@Transactional
 @QuarkusTest
 public class SurveyControllerIntegrationTest {
 
@@ -73,7 +75,7 @@ public class SurveyControllerIntegrationTest {
     @Test
     public void shouldPersistASurveyGroup() throws Exception {
         
-       /* MvcResult result = mockMvc.perform(post("/surveygroups")
+       /*MvcResult result = mockMvc.perform(post("/surveygroups")
             .contentType(MediaType.APPLICATION_JSON)
             .content(mapper.writeValueAsString(ResourceHelper.getDefaultSurveyGroupResource())))
             .andExpect(status().isCreated())
