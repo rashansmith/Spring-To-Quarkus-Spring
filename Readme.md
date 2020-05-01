@@ -18,6 +18,12 @@ and it's pom.xml elements were transferred to this repo, and non quarkus Spring 
 mvn clean package
 ```
 
+### Runnning Postgres
+
+```
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=test_user -e POSTGRES_DB=surveydb -d postgres
+```
+
 ### Running Locally
 You can run the quarkus application locally by issueing the following command:
 
