@@ -21,7 +21,10 @@ mvn clean package
 ### Runnning Postgres
 
 ```
-docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=test_user -e POSTGRES_DB=surveydb -d postgres
+docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0 \
+           --name postgres-quarkus-hibernate -e POSTGRES_USER=hibernate \
+           -e POSTGRES_PASSWORD=hibernate -e POSTGRES_DB=hibernate_db \
+           -p 5432:5432 postgres:10.5
 ```
 
 ### Running Locally
