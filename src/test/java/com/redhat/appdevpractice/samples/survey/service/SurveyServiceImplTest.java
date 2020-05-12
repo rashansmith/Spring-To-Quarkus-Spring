@@ -18,94 +18,78 @@ import io.quarkus.test.junit.QuarkusTest;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-//import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.Mockito;
 
-//@ExtendWith(MockitoExtension.class)
 @Transactional
 @QuarkusTest
 public class SurveyServiceImplTest {
 
-    @InjectMocks
-    private SurveyGroupRepository repository;
+	@InjectMocks
+	private SurveyGroupRepository repository;
 
-    @InjectMocks
-    private MockSurveyServiceImpl surveyService;
-    
+	@InjectMocks
+	private MockSurveyServiceImpl surveyService;
 
-    @BeforeAll
-    public static void initialize()  {
-       /* MockHttpServletRequest request = new MockHttpServletRequest("POST", "/surveygroups"); 
-        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));*/
-    	
-       //MockHttpRequest request = MockHttpRequest.post("/surveygroups");
-       //MockHttpRequest.create("POST", "/surveygroups");
-    //	  mockServer = MockRestServiceServer.createServer(restTemplate)
-       MockSurveyServiceImpl mock = Mockito.mock(MockSurveyServiceImpl.class);  
-       QuarkusMock.installMockForType(mock, MockSurveyServiceImpl.class); 
-   }
-    
-    @Test
-    public void shouldCreateSurveyGroup() {
+	@BeforeAll
+	public static void initialize() {
+		MockSurveyServiceImpl mock = Mockito.mock(MockSurveyServiceImpl.class);
+		QuarkusMock.installMockForType(mock, MockSurveyServiceImpl.class);
+	}
 
-        SurveyGroup surveyGroup = new SurveyGroup();
+	@Test
+	public void shouldCreateSurveyGroup() {
 
-        //Mockito.when(this.repository.saveAndFlush(surveyGroup)).thenReturn(surveyGroup);
-        
-        //when(this.repository.persistAndFlush(surveyGroup)).thenReturn(surveyGroup);
+		SurveyGroup surveyGroup = new SurveyGroup();
 
-        this.surveyService.createSurveyGroup(surveyGroup);
+		this.surveyService.createSurveyGroup(surveyGroup);
 
-        //verify(this.repository).saveandflush(surveyGroup);
-        verify(this.repository).persistAndFlush(surveyGroup);
-    }
+		verify(this.repository).persistAndFlush(surveyGroup);
 
-    @Test
-    public void shouldGenerateUUID() {
+	}
 
-        SurveyGroup surveyGroup = new SurveyGroup();
+	@Test
+	public void shouldGenerateUUID() {
 
-        //Mockito.when(this.repository.persistAndFlush(surveyGroup)).thenReturn(surveyGroup);
+		SurveyGroup surveyGroup = new SurveyGroup();
 
-        this.surveyService.createSurveyGroup(surveyGroup);
+		this.surveyService.createSurveyGroup(surveyGroup);
 
-        assertTrue(!surveyGroup.getGuid().isEmpty());
-    }
+		assertTrue(!surveyGroup.getGuid().isEmpty());
+	}
 
-    @Test
-    public void shouldGetAllSurveyGroups() {
+	@Test
+	public void shouldGetAllSurveyGroups() {
 
-        this.surveyService.getSurveyGroups();
-        verify(this.repository).listAll();
-    }
+		this.surveyService.getSurveyGroups();
 
-    @Test
-    public void shouldGetSurveyGroup() {
-        
-        String guid = "234234234";
+		verify(this.repository).listAll();
+	}
 
-        SurveyGroup surveyGroup = new SurveyGroup();
-        //Mockito.when(this.repository.findByGuid(guid)).thenReturn(surveyGroup);
-        when(this.repository.findByGuid(guid)).thenCallRealMethod();
-        SurveyGroup returned = this.surveyService.getSurveyGroup(guid);
-        verify(this.repository).findByGuid(guid);
+	@Test
+	public void shouldGetSurveyGroup() {
 
-        assertEquals(surveyGroup, returned);
-    }
+		String guid = "234234234";
 
-    @Test
-    public void shouldThrowResourceNotFoundExceptionIfNoSurveyGroupMatchesGuid() {
-        
-        String guid = "234234234";
+		SurveyGroup surveyGroup = new SurveyGroup();
+		Mockito.when(this.repository.findByGuid(guid)).thenReturn(surveyGroup);
+		when(this.repository.findByGuid(guid)).thenCallRealMethod();
+		SurveyGroup returned = this.surveyService.getSurveyGroup(guid);
+		verify(this.repository).findByGuid(guid);
 
-        Mockito.when(this.repository.findByGuid(guid)).thenReturn(null);
+		assertEquals(surveyGroup, returned);
+	}
 
-        assertThrows(ResourceNotFoundException.class, () -> {
-            this.surveyService.getSurveyGroup(guid);
-        });
-    }
+	@Test
+	public void shouldThrowResourceNotFoundExceptionIfNoSurveyGroupMatchesGuid() {
+
+		String guid = "234234234";
+
+		Mockito.when(this.repository.findByGuid(guid)).thenReturn(null);
+
+		assertThrows(ResourceNotFoundException.class, () -> {
+			this.surveyService.getSurveyGroup(guid);
+		});
+	}
 
 }
