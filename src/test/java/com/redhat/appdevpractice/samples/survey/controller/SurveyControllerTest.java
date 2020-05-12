@@ -203,7 +203,7 @@ public class SurveyControllerTest {
         Response group = this.controller.getSurveyGroup(guid);
 
         Integer status = 400;
-        assertEquals(401, group.getStatus());
+        assertEquals(404, group.getStatus());
     }
 
 }

@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 import com.redhat.appdevpractice.samples.survey.exception.ResourceNotFoundException;
@@ -21,11 +22,11 @@ import org.springframework.stereotype.Service;
 @ApplicationScoped
 public class SurveyServiceImpl implements SurveyService {
 
-	@Inject
+    @Inject
     private SurveyGroupRepository surveyGroupRepository;
-    
-    //@Inject
-    //EntityManager em;
+
+    // @Inject
+    // EntityManager em;
 
     @Autowired
     public SurveyServiceImpl(SurveyGroupRepository surveyGroupRepository) {
@@ -34,37 +35,36 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Transactional
     public SurveyGroup createSurveyGroup(SurveyGroup surveyGroup) {
-    	String guid = UUID.randomUUID().toString();
-    	surveyGroup.setGuid(guid);
-        //surveyGroup.setGuid(UUID.randomUUID().toString());
-        //em.persist(surveyGroup);
+        String guid = UUID.randomUUID().toString();
+        surveyGroup.setGuid(guid);
+        // surveyGroup.setGuid(UUID.randomUUID().toString());
+        // em.persist(surveyGroup);
         surveyGroupRepository.persistAndFlush(surveyGroup);
         return surveyGroupRepository.findByGuid(guid);
-        //return surveyGroupRepository.saveandflush(surveyGroup);
+        // return surveyGroupRepository.saveandflush(surveyGroup);
     }
 
     @Transactional
     public List<SurveyGroup> getSurveyGroups() {
-        //return surveyGroupRepository.findAll();
-		List<SurveyGroup> surveyGroups = surveyGroupRepository.findAll().list();
-    	return surveyGroups;
+        // return surveyGroupRepository.findAll();
+        List<SurveyGroup> surveyGroups = surveyGroupRepository.findAll().list();
+        return surveyGroups;
     }
 
     @Transactional
     public SurveyGroup getSurveyGroup(String surveyGroupGuid) {
-        SurveyGroup surveyGroup = surveyGroupRepository.findByGuid(surveyGroupGuid);
-        
-        if( surveyGroup == null){
+        try {
+            return surveyGroupRepository.findByGuid(surveyGroupGuid);
+        } catch (NoResultException e) {
             throw new ResourceNotFoundException("The survey group does not exist.");
         }
-        return surveyGroup;
     }
 
     @Override
     public SurveyGroup updateSurveyGroup(SurveyGroup oldSurveyGroup, SurveyGroup newSurveyGroup) {
         oldSurveyGroup.updateWith(newSurveyGroup);
-        //em.persist(oldSurveyGroup);
-        //return this.surveyGroupRepository.saveandflush(oldSurveyGroup);
+        // em.persist(oldSurveyGroup);
+        // return this.surveyGroupRepository.saveandflush(oldSurveyGroup);
         surveyGroupRepository.persistAndFlush(oldSurveyGroup);
         return oldSurveyGroup;
     }
