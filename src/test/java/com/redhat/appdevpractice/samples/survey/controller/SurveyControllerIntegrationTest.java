@@ -24,62 +24,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 @QuarkusTest
 public class SurveyControllerIntegrationTest {
 
-    @Autowired
-    private ObjectMapper mapper;
+	@Autowired
+	private ObjectMapper mapper;
 
-    @BeforeEach
-    public void init() {
-        JavaTimeModule module = new JavaTimeModule();
-        LocalDateTimeDeserializer localDateTimeDeserializer = new LocalDateTimeDeserializer(
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        module.addDeserializer(LocalDateTime.class, localDateTimeDeserializer);
-        mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
-    }
+	@BeforeEach
+	public void init() {
+		JavaTimeModule module = new JavaTimeModule();
+		LocalDateTimeDeserializer localDateTimeDeserializer = new LocalDateTimeDeserializer(
+				DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+		module.addDeserializer(LocalDateTime.class, localDateTimeDeserializer);
+		mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
+	}
 
-    @Test
-    public void shouldPersistASurveyGroup() throws Exception {
-        RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
-                .body(ResourceHelper.getDefaultSurveyGroupResource()).when().post("/surveygroups").then()
-                .statusCode(200);
-    }
+	@Test
+	public void shouldPersistASurveyGroup() throws Exception {
+		RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
+				.body(ResourceHelper.getDefaultSurveyGroupResource()).when().post("/surveygroups").then()
+				.statusCode(200);
+	}
 
-    @Test
-    public void shouldGetSurveyGroupByGuid() throws Exception {
+	@Test
+	public void shouldGetSurveyGroupByGuid() throws Exception {
 
-        RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
-                .body(mapper.writeValueAsString(ResourceHelper.getDefaultSurveyGroupResource())).when()
-                .post("/surveygroups").then().statusCode(200).body("projectId", is("Horcrux 1"));
-    }
+		RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
+				.body(mapper.writeValueAsString(ResourceHelper.getDefaultSurveyGroupResource())).when()
+				.post("/surveygroups").then().statusCode(200).body("projectId", is("Horcrux 1"));
+	}
 
-    @Test
-    public void shouldGet404NotFound() throws Exception {
+	@Test
+	public void shouldGet404NotFound() throws Exception {
 
-        RestAssured.given().when().get("/surveygroups/buster").then().assertThat().statusCode(404);
-    }
+		RestAssured.given().when().get("/surveygroups/buster").then().assertThat().statusCode(404);
+	}
 
-    @Test
-    public void shouldReturnAListOfSurveyGroups() throws Exception {
+	@Test
+	public void shouldReturnAListOfSurveyGroups() throws Exception {
 
-        SurveyGroupResource nasaSurveyGroup = new SurveyGroupResource();
-        nasaSurveyGroup.setOpportunityId("NASA");
+		SurveyGroupResource nasaSurveyGroup = new SurveyGroupResource();
+		nasaSurveyGroup.setOpportunityId("NASA");
 
-        nasaSurveyGroup.getEmployeeAssignments().add(ResourceHelper.generateEmployeeAssignment("bob@redhat.com"));
+		nasaSurveyGroup.getEmployeeAssignments().add(ResourceHelper.generateEmployeeAssignment("bob@redhat.com"));
 
-        SurveyGroupResource coronaVirusSurveyGroup = new SurveyGroupResource();
-        coronaVirusSurveyGroup.setOpportunityId("Corona");
+		SurveyGroupResource coronaVirusSurveyGroup = new SurveyGroupResource();
+		coronaVirusSurveyGroup.setOpportunityId("Corona");
 
-        coronaVirusSurveyGroup.getEmployeeAssignments()
-                .add(ResourceHelper.generateEmployeeAssignment("bob@redhat.com"));
+		coronaVirusSurveyGroup.getEmployeeAssignments()
+				.add(ResourceHelper.generateEmployeeAssignment("bob@redhat.com"));
 
-        RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
-                .body(mapper.writeValueAsString(nasaSurveyGroup)).when().post("/surveygroups").then().statusCode(200);
+		RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
+				.body(mapper.writeValueAsString(nasaSurveyGroup)).when().post("/surveygroups").then().statusCode(200);
 
-        RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
-                .body(mapper.writeValueAsString(coronaVirusSurveyGroup)).when().post("/surveygroups").then()
-                .statusCode(200);
+		RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
+				.body(mapper.writeValueAsString(coronaVirusSurveyGroup)).when().post("/surveygroups").then()
+				.statusCode(200);
 
-        RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON).when().get("/surveygroups")
-                .then().statusCode(200);
+		RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON).when().get("/surveygroups")
+				.then().statusCode(200);
 
-    }
+	}
 }
