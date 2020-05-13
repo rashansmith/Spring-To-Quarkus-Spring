@@ -2,7 +2,9 @@ package com.redhat.appdevpractice.samples.survey.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -10,13 +12,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
+import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
+import com.redhat.appdevpractice.samples.survey.repository.SurveyGroupRepository;
 import com.redhat.appdevpractice.samples.survey.utils.ResourceHelper;
 
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.mockito.InjectMock;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.hamcrest.CoreMatchers.containsString;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -30,6 +38,9 @@ public class SurveyControllerIntegrationTest {
 	@Autowired
 	private ObjectMapper mapper;
 
+	@Inject
+	SurveyGroupRepository repository;
+	
 	@BeforeEach
 	public void init() {
 		JavaTimeModule module = new JavaTimeModule();
@@ -41,13 +52,20 @@ public class SurveyControllerIntegrationTest {
 
 	@Test
 	public void shouldPersistASurveyGroup() throws Exception {
-		RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
+		
+		String location = RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
 				.body(ResourceHelper.getDefaultSurveyGroupResource()).when().post("/surveygroups").then()
-				.statusCode(201);
+				.statusCode(201).extract().header("Location");
+
+		String guid = location.toString().replace("http://localhost:8081/surveygroups/", "");
+
+		assertTrue(repository.findByGuid(guid).isPersistent());
+
 	}
 
 	@Test
 	public void shouldGetSurveyGroupByGuid() throws Exception {
+		
 		SurveyGroupResource nasaSurveyGroup = new SurveyGroupResource();
 		nasaSurveyGroup.setOpportunityId("NASA");
 
@@ -89,7 +107,9 @@ public class SurveyControllerIntegrationTest {
 				.body(mapper.writeValueAsString(coronaVirusSurveyGroup)).when().post("/surveygroups").then()
 				.statusCode(201);
 
-		RestAssured.given().when().get("/surveygroups").then().statusCode(200).body("size()", is(2));
-
+		RestAssured.given().when().get("/surveygroups").then().statusCode(200).body("size()", is(2))
+				.body("opportunityId[0]", containsString("NASA"))
+				.body("opportunityId[1]", containsString("Corona"));
+		
 	}
 }
