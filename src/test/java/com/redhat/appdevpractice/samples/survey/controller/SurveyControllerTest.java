@@ -41,102 +41,103 @@ import org.springframework.http.ResponseEntity;
 @Transactional
 public class SurveyControllerTest {
 
-    @InjectMocks
-    private SurveyController controller;
+	@InjectMocks
+	private SurveyController controller;
 
-    @InjectMocks
-    private static SurveyServiceImpl surveyService;
-   
+	@InjectMocks
+	private static SurveyServiceImpl surveyService;
 
-    @BeforeEach
-    public void initialize()  {
+	@BeforeEach
+	public void initialize() {
+		surveyService = Mockito.mock(SurveyServiceImpl.class);
+		controller = Mockito.mock(SurveyController.class);
+		when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(new SurveyGroup());
+	}
 
-    	//SurveyServiceImpl mock = Mockito.mock(SurveyServiceImpl.class);  
-        //QuarkusMock.installMockForType(mock, SurveyServiceImpl.class); 
-        //surveyService = new SurveyServiceImpl(surveyGroupRepo);
-        //MockitoAnnotations.initMocks(this);
-    	 surveyService = Mockito.mock(SurveyServiceImpl.class);
-   	     controller = Mockito.mock(SurveyController.class); 
-   	     when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(new SurveyGroup());
-   }
-    
-    @Test
-    public void shouldCallSurveyService() throws URISyntaxException {
-         
-         controller.createSurvey(new NewSurveyGroupResource());
+	@Test
+	public void shouldCallSurveyService() throws URISyntaxException {
 
-         verify(controller, times(1)).createSurvey(any(NewSurveyGroupResource.class));
-    }
+		controller.createSurvey(new NewSurveyGroupResource());
 
-    /*@Test
-    public void shouldReturn201Created() throws URISyntaxException {
-         
-    	controller.createSurvey(new NewSurveyGroupResource()).getStatusCode();
+		verify(controller, times(1)).createSurvey(any(NewSurveyGroupResource.class));
+	}
 
-         verify(controller, times(1)).createSurvey(any(NewSurveyGroupResource.class));
-         
-    }*/
+	/*
+	 * @Test public void shouldReturn201Created() throws URISyntaxException {
+	 * 
+	 * controller.createSurvey(new NewSurveyGroupResource()).getStatusCode();
+	 * 
+	 * verify(controller, times(1)).createSurvey(any(NewSurveyGroupResource.class));
+	 * 
+	 * }
+	 */
 
-    /*@Test
-    public void shouldReturnLocationWithPathAndGuid() throws URISyntaxException {
+	/*
+	 * @Test public void shouldReturnLocationWithPathAndGuid() throws
+	 * URISyntaxException {
+	 * 
+	 * @Test public void shouldReturn201Created() throws URISyntaxException {
+	 * when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(new
+	 * SurveyGroup());
+	 * 
+	 * ResponseEntity<String> response = this.controller.createSurvey(new
+	 * NewSurveyGroupResource());
+	 * 
+	 * when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(
+	 * persistedGroup); ResponseEntity<String> response =
+	 * controller.createSurvey(new NewSurveyGroupResource());
+	 * 
+	 * String locationHeaderPath = response.getHeaders().getLocation().getPath();
+	 * assertEquals("/surveygroups/" + guid, locationHeaderPath); }
+	 */
 
-        String guid = "lsdfjlsfjdldjfsl23423424234";
+	/*
+	 * @Test public void shouldReturnLocationWithPathAndGuid() throws
+	 * URISyntaxException {
+	 * 
+	 * String guid = "lsdfjlsfjdldjfsl23423424234";
+	 * 
+	 * when(surveyService.getSurveyGroups()).thenReturn(Arrays.asList(
+	 * persistedSurveyGroup1, persistedSurveyGroup2));
+	 * 
+	 * 
+	 * controller.createSurvey(new NewSurveyGroupResource());
+	 * controller.createSurvey(new NewSurveyGroupResource());
+	 * 
+	 * controller.getSurveyGroups();
+	 * 
+	 * verify(controller, times(1)).getSurveyGroups();
+	 * 
+	 * }
+	 */
 
-        SurveyGroup persistedGroup = new SurveyGroup();
-        persistedGroup.setGuid(guid);
+	/*
+	 * @Test public void shouldCallSurveyServiceToGetAllSurveyGroups() throws
+	 * URISyntaxException {
+	 * 
+	 * SurveyGroup persistedSurveyGroup1 = new SurveyGroup(); SurveyGroup
+	 * persistedSurveyGroup2 = new SurveyGroup();
+	 * 
+	 * when(surveyService.getSurveyGroups()).thenReturn(Arrays.asList(
+	 * persistedSurveyGroup1, persistedSurveyGroup2));
+	 * 
+	 * when(surveyService.getSurveyGroup(guid)).thenReturn(persistedSurveyGroup);
+	 * 
+	 * controller.getSurveyGroup(guid);
+	 * 
+	 * verify(controller, times(1)).getSurveyGroup(guid);
+	 * 
+	 * }
+	 */
 
-        when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(persistedGroup);
-        ResponseEntity<String> response = controller.createSurvey(new NewSurveyGroupResource());
-        
-        String locationHeaderPath = response.getHeaders().getLocation().getPath();
-        assertEquals("/surveygroups/" + guid, locationHeaderPath);
-    }*/
-
-    @Test
-    public void shouldCallSurveyServiceToGetAllSurveyGroups() throws URISyntaxException {
-
-    	SurveyGroup persistedSurveyGroup1 = new SurveyGroup();
-        SurveyGroup persistedSurveyGroup2 = new SurveyGroup();
-
-        when(surveyService.getSurveyGroups()).thenReturn(Arrays.asList(persistedSurveyGroup1, persistedSurveyGroup2));
-           
-        
-        controller.createSurvey(new NewSurveyGroupResource());
-        controller.createSurvey(new NewSurveyGroupResource());
-        
-        controller.getSurveyGroups();
-
-        verify(controller, times(1)).getSurveyGroups();
-        
-    }
-
-    @Test
-    public void shouldReturnSurveyGroupByGuid() throws URISyntaxException {
-
-        String guid = "lsdfjlsfjdldjfsl23423424234";
-
-        SurveyGroup persistedSurveyGroup = new SurveyGroup();
-        
-        persistedSurveyGroup.setGuid(guid);
-
-        when(surveyService.getSurveyGroup(guid)).thenReturn(persistedSurveyGroup);
-        
-        controller.getSurveyGroup(guid);
-
-        verify(controller, times(1)).getSurveyGroup(guid);
-
-    }
-
-    /*@Test
-    public void shouldReturn404NotFound() throws URISyntaxException {
-
-        String guid = "lsdfjlsfjdldjfsl23423424234";
-
-        when(surveyService.getSurveyGroup(guid)).thenReturn(null);
-        
-        ResponseEntity<SurveyGroupResource> group = this.controller.getSurveyGroup(guid);
-
-        assertEquals("404", group.getStatusCodeValue());
-    }*/
+	/*
+	 * @Test public void shouldReturn404NotFound() throws URISyntaxException {
+	 * 
+	 * String guid = "lsdfjlsfjdldjfsl23423424234";
+	 * 
+	 * SurveyGroup persistedSurveyGroup = new SurveyGroup();
+	 * 
+	 * assertEquals("404", group.getStatusCodeValue()); }
+	 */
 
 }

@@ -32,70 +32,61 @@ public class SurveyServiceImplTest {
 	private SurveyGroupRepository repository;
 
 	@InjectMock
-	private  SurveyServiceImpl surveyService;
+	private SurveyServiceImpl surveyService;
 
-	
 	@BeforeEach
 	public void setup() {
 		surveyService = Mockito.mock(SurveyServiceImpl.class);
-   	    repository = Mockito.mock(SurveyGroupRepository.class); 
-	}
-	
-	/*@Test
-	public void shouldCreateSurveyGroup() {
-
-		SurveyGroup surveyGroup = new SurveyGroup();
-
-		this.surveyService.createSurveyGroup(surveyGroup);
-
-		verify(this.repository).persistAndFlush(surveyGroup);
-		
+		repository = Mockito.mock(SurveyGroupRepository.class);
 	}
 
-	@Test
-	public void shouldGenerateUUID() {
-
-		SurveyGroup surveyGroup = new SurveyGroup();
-
-		this.surveyService.createSurveyGroup(surveyGroup);
-		
-		assertTrue(!surveyGroup.getGuid().isEmpty());
-	}
-
-	@Test
-	public void shouldGetAllSurveyGroups() {
-
-		this.surveyService.getSurveyGroups();
-
-		verify(this.repository).listAll();
-	}
-
-	@Test
-	public void shouldGetSurveyGroup() {
-
-		String guid = "234234234";
-
-		SurveyGroup surveyGroup = new SurveyGroup();
-		surveyGroup.setGuid(guid);
-		//when(this.repository.findByGuid(guid)).thenReturn(surveyGroup);
-		//when(this.repository.findByGuid(guid)).thenCallRealMethod();
-		repository.persistAndFlush(surveyGroup);
-		SurveyGroup returned = this.surveyService.getSurveyGroup(guid);
-		verify(this.repository).findByGuid(guid);
-
-		assertEquals(surveyGroup, returned);
-	}
-
-	@Test
-	public void shouldThrowResourceNotFoundExceptionIfNoSurveyGroupMatchesGuid() {
-
-		String guid = "234234234";
-
-		when(this.repository.findByGuid(guid)).thenReturn(null);
-
-		assertThrows(ResourceNotFoundException.class, () -> {
-			this.surveyService.getSurveyGroup(guid);
-		});
-	}*/
+	/*
+	 * @Test public void shouldCreateSurveyGroup() {
+	 * 
+	 * SurveyGroup surveyGroup = new SurveyGroup();
+	 * 
+	 * this.surveyService.createSurveyGroup(surveyGroup);
+	 * 
+	 * verify(this.repository).persistAndFlush(surveyGroup);
+	 * 
+	 * }
+	 * 
+	 * @Test public void shouldGenerateUUID() {
+	 * 
+	 * SurveyGroup surveyGroup = new SurveyGroup();
+	 * 
+	 * this.surveyService.createSurveyGroup(surveyGroup);
+	 * 
+	 * assertTrue(!surveyGroup.getGuid().isEmpty()); }
+	 * 
+	 * @Test public void shouldGetAllSurveyGroups() {
+	 * 
+	 * this.surveyService.getSurveyGroups();
+	 * 
+	 * verify(this.repository).listAll(); }
+	 * 
+	 * @Test public void shouldGetSurveyGroup() {
+	 * 
+	 * String guid = "234234234";
+	 * 
+	 * SurveyGroup surveyGroup = new SurveyGroup(); surveyGroup.setGuid(guid);
+	 * //when(this.repository.findByGuid(guid)).thenReturn(surveyGroup);
+	 * //when(this.repository.findByGuid(guid)).thenCallRealMethod();
+	 * repository.persistAndFlush(surveyGroup); SurveyGroup returned =
+	 * this.surveyService.getSurveyGroup(guid);
+	 * verify(this.repository).findByGuid(guid);
+	 * 
+	 * assertEquals(surveyGroup, returned); }
+	 * 
+	 * @Test public void
+	 * shouldThrowResourceNotFoundExceptionIfNoSurveyGroupMatchesGuid() {
+	 * 
+	 * String guid = "234234234";
+	 * 
+	 * when(this.repository.findByGuid(guid)).thenReturn(null);
+	 * 
+	 * assertThrows(ResourceNotFoundException.class, () -> {
+	 * this.surveyService.getSurveyGroup(guid); }); }
+	 */
 
 }
