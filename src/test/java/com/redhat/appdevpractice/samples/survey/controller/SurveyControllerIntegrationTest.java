@@ -89,7 +89,7 @@ public class SurveyControllerIntegrationTest {
 				.body(mapper.writeValueAsString(coronaVirusSurveyGroup)).when().post("/surveygroups").then()
 				.statusCode(201);
 
-		RestAssured.given().when().get("/surveygroups").then().statusCode(200);
+		RestAssured.given().when().get("/surveygroups").then().statusCode(200).body("size()", is(2));
 
 	}
 }
