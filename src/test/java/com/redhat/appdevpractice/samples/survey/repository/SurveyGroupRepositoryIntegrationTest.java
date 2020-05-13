@@ -44,7 +44,6 @@ public class SurveyGroupRepositoryIntegrationTest {
     	assertTrue(actualMessage.contains(expectedMessage));
     }
     	
-      
 
     @Test
     public void shouldFindSurveyGroupByGuid() {

@@ -3,6 +3,7 @@ package com.redhat.appdevpractice.samples.survey.repository;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.Transactional;
 
 
 @ApplicationScoped

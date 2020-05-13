@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -34,7 +38,8 @@ public class SurveyGroup extends PanacheEntity {
 
     private String projectCreatorId;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@LazyToOne(value = LazyToOneOption.NO_PROXY)
     @JoinTable(name = "surveygroup_employee_assignments", 
         joinColumns = { @JoinColumn(name = "id") }, 
         inverseJoinColumns = { @JoinColumn(name = "employee_assignment_id") })
@@ -95,7 +100,9 @@ public class SurveyGroup extends PanacheEntity {
         return employeeAssignments;
     }
 
-    public void setEmployeeAssignments(List<EmployeeAssignment> employeeAssignments) {
+
+
+	public void setEmployeeAssignments(List<EmployeeAssignment> employeeAssignments) {
         this.employeeAssignments = employeeAssignments;
     }
 

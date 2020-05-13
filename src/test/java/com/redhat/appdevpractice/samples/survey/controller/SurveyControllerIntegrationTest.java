@@ -2,6 +2,7 @@ package com.redhat.appdevpractice.samples.survey.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import javax.transaction.Transactional;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -14,7 +15,10 @@ import com.redhat.appdevpractice.samples.survey.utils.ResourceHelper;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+
+
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.containsString;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,20 +44,30 @@ public class SurveyControllerIntegrationTest {
     public void shouldPersistASurveyGroup() throws Exception {
         RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
                 .body(ResourceHelper.getDefaultSurveyGroupResource()).when().post("/surveygroups").then()
-                .statusCode(200);
+                .statusCode(201);
     }
 
     @Test
     public void shouldGetSurveyGroupByGuid() throws Exception {
-
+    	SurveyGroupResource nasaSurveyGroup = new SurveyGroupResource();
+        nasaSurveyGroup.setOpportunityId("NASA");
+        
+        nasaSurveyGroup.getEmployeeAssignments().add(ResourceHelper.generateEmployeeAssignment("bob@redhat.com"));
+        
+    	String location = RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
+         		.body(nasaSurveyGroup).when().post("/surveygroups").then()
+         		.statusCode(201).extract().header("Location");
+    	
+    	String s = location.toString().replace("http://localhost:8081/surveygroups/", "");
+         
         RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
-                .body(mapper.writeValueAsString(ResourceHelper.getDefaultSurveyGroupResource())).when()
-                .post("/surveygroups").then().statusCode(200).body("projectId", is("Horcrux 1"));
+                .when()
+                .get("/surveygroups/"+s).then().statusCode(200).body("opportunityId", is("NASA"));
     }
 
     @Test
     public void shouldGet404NotFound() throws Exception {
-
+    	
         RestAssured.given().when().get("/surveygroups/buster").then().assertThat().statusCode(404);
     }
 
@@ -72,13 +86,13 @@ public class SurveyControllerIntegrationTest {
                 .add(ResourceHelper.generateEmployeeAssignment("bob@redhat.com"));
 
         RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
-                .body(mapper.writeValueAsString(nasaSurveyGroup)).when().post("/surveygroups").then().statusCode(200);
+                .body(mapper.writeValueAsString(nasaSurveyGroup)).when().post("/surveygroups").then().statusCode(201);
 
         RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON)
                 .body(mapper.writeValueAsString(coronaVirusSurveyGroup)).when().post("/surveygroups").then()
-                .statusCode(200);
+                .statusCode(201);
 
-        RestAssured.given().accept(ContentType.JSON).request().contentType(ContentType.JSON).when().get("/surveygroups")
+        RestAssured.given().when().get("/surveygroups")
                 .then().statusCode(200);
 
     }

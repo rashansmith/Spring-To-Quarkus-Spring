@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
-
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.container.ResourceContext;
 import javax.ws.rs.core.Context;
@@ -74,13 +74,14 @@ public class SurveyController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "An array of all survey groups in the system. If no survey groups exist, an empty list.") })
 	@GetMapping("/surveygroups")
+	@Transactional
 	public List<SurveyGroupResource> getSurveyGroups() {
 
 		List<SurveyGroup> surveyGroups = this.surveyService.getSurveyGroups();
 
 		List<SurveyGroupResource> resourceCollection = new ArrayList<>();
 
-		surveyGroups.forEach(sg -> resourceCollection.add(HttpMapper.MAPPER.convertToSurveyGroupResourceFrom(sg)));
+		surveyGroups.forEach(sg -> resourceCollection.add(HttpUtils.convertToSurveyGroupResourceFrom(sg)));
 
 		return resourceCollection;
 	}
@@ -90,6 +91,7 @@ public class SurveyController {
 			@ApiResponse(responseCode = "200", description = "The survey group matching the ID in the URL."),
 			@ApiResponse(responseCode = "404", description = "A survey group with the given ID was not found.") })
 	@GetMapping("/surveygroups/{surveyGroupId}")
+	@Transactional
 	public ResponseEntity<SurveyGroupResource> getSurveyGroup(@PathVariable("surveyGroupId") String surveyGroupId) {
 		SurveyGroup surveyGroup = this.surveyService.getSurveyGroup(surveyGroupId);
 
@@ -97,7 +99,7 @@ public class SurveyController {
 			return ResponseEntity.notFound().build();
 		}
 
-		SurveyGroupResource resource = HttpMapper.MAPPER.convertToSurveyGroupResourceFrom(surveyGroup);
+		SurveyGroupResource resource = HttpUtils.convertToSurveyGroupResourceFrom(surveyGroup);
 
 		return ResponseEntity.ok().body(resource);
 
@@ -108,6 +110,7 @@ public class SurveyController {
 			@ApiResponse(responseCode = "200", description = "The survey group was successfully edited."),
 			@ApiResponse(responseCode = "401", description = "A survey group with the given ID was not found.") })
 	@PutMapping("/surveygroups/{surveyGroupId}")
+	@Transactional
 	public ResponseEntity<SurveyGroupResource> saveSurveyGroup(@PathVariable String surveyGroupId,
 			@RequestBody SurveyGroupResource surveyGroupResource) {
 
@@ -118,10 +121,10 @@ public class SurveyController {
 
 		}
 
-		SurveyGroup newSurveyGroup = HttpMapper.MAPPER.convertToSurveyGroupFrom(surveyGroupResource);
+		SurveyGroup newSurveyGroup = HttpUtils.convertToSurveyGroupFrom(surveyGroupResource);
 		surveyGroup = surveyService.updateSurveyGroup(surveyGroup, newSurveyGroup);
 
-		SurveyGroupResource resource = HttpMapper.MAPPER.convertToSurveyGroupResourceFrom(surveyGroup);
+		SurveyGroupResource resource = HttpUtils.convertToSurveyGroupResourceFrom(surveyGroup);
 
 		return ResponseEntity.ok().body(resource);
 	}

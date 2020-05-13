@@ -3,6 +3,7 @@ package com.redhat.appdevpractice.samples.survey.model;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,11 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
+//@Proxy(lazy=true)
 public class EmployeeAssignment extends PanacheEntity {
 
     @Id
@@ -28,7 +34,8 @@ public class EmployeeAssignment extends PanacheEntity {
     @JsonFormat(pattern = "YYYY-MM-dd")
     private LocalDate endProjectDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    //@LazyToOne(value = LazyToOneOption.PROXY)
     @JoinTable(name = "surveygroup_employee", 
         joinColumns = { @JoinColumn(name = "employee_id") }, 
         inverseJoinColumns = { @JoinColumn(name = "id") })
