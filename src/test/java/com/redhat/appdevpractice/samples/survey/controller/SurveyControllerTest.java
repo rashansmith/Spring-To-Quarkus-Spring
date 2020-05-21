@@ -67,8 +67,6 @@ public class SurveyControllerTest {
 
 	@BeforeEach
 	public void initialize() {
-		//controller = Mockito.mock(SurveyController.class);
-		//QuarkusMock.installMockForType(controller, SurveyController.class);
 		when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(new SurveyGroup());
 		when(controller.createSurvey(any(NewSurveyGroupResource.class))).thenReturn(new ResponseEntity<String>(new String(), HttpStatus.CREATED)); 
 	}
@@ -91,34 +89,47 @@ public class SurveyControllerTest {
         ResponseEntity<String> response = this.controller.createSurvey(new NewSurveyGroupResource());
         
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-
 	}
 
 	@Test
 	public void shouldReturnLocationWithPathAndGuid() throws URISyntaxException {
-		
+		/*
+		 * String guid = "lsdfjlsfjdldjfsl23423424234";
+		 * 
+		 * SurveyGroup persistedGroup = new SurveyGroup(); persistedGroup.setGuid(guid);
+		 * 
+		 * NewSurveyGroupResource nsqr = new NewSurveyGroupResource();
+		 * nsqr.setOpportunityId("12343423"); String s = "32432325";
+		 * when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(
+		 * persistedGroup); when(controller.createSurvey(nsqr)).thenReturn(new
+		 * ResponseEntity<String>(s, HttpStatus.CREATED));
+		 * 
+		 * ResponseEntity<String> response = this.controller.createSurvey(nsqr);
+		 * 
+		 * assertEquals("/surveygroups/" + guid, response.getHeaders().getLocation());
+		 * 
+		 */
 		String guid = "lsdfjlsfjdldjfsl23423424234";
-
-		SurveyGroup persistedGroup = new SurveyGroup();
+		 
+		SurveyGroup persistedGroup = new SurveyGroup(); 
+		 
 		persistedGroup.setGuid(guid);
-
-		NewSurveyGroupResource nsqr = new NewSurveyGroupResource();
-		String s = "32432325";
-		when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(persistedGroup);
-		when(controller.createSurvey(nsqr)).thenReturn(new ResponseEntity<String>(s, HttpStatus.CREATED));
-
-		HttpHeaders response = controller.createSurvey(nsqr).getHeaders();
-
-		//String locationHeaderPath = response.getHeaders().getLocation().getPath();
-		//String locationHeaderPath = response.getHeaders().getLocation().getPath();
-		//System.out.println(locationHeaderPath);
-		//assertEquals("/surveygroups/" + guid, locationHeaderPath);
-		//String locationHeaderPath = controller.createSurvey(nsqr).getStatusCode().toString();
-		System.out.println(response);
-		assertEquals("/surveygroups/" + guid, response);
-		//System.out.println(result);
-		verify(controller, times(1)).getSurveyGroup(guid);
-		//System.out.println(controller.createSurvey(nsqr).getStatusCodeValue());
+		
+		controller.createSurvey(new NewSurveyGroupResource());
+		
+		when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(
+				 persistedGroup);
+		
+		when(controller.createSurvey(any(NewSurveyGroupResource.class)))
+				.thenReturn(new ResponseEntity<String>(new String(), HttpStatus.CREATED)); 
+		
+		//verify(controller, times(1)).createSurvey(any(NewSurveyGroupResource.class));
+		String response = this.controller.createSurvey(new NewSurveyGroupResource()).getBody().toString();
+        
+        //assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        
+        assertEquals("/surveygroups/" + guid, response);
+       
 	}
 
 	@Test

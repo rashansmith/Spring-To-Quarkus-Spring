@@ -81,7 +81,16 @@ public class SurveyServiceImplTest {
 
 	@Test
 	public void shouldThrowResourceNotFoundExceptionIfNoSurveyGroupMatchesGuid() {
-
+		/*
+		 * String guid = "234234234";
+		 * 
+		 * when(this.repository.findByGuid(guid)).thenReturn(null);
+		 * 
+		 * assertThrows(ResourceNotFoundException.class, () -> {
+		 * this.surveyService.getSurveyGroup(guid); });
+		 * 
+		 * 
+		 */
 		String guid = "234234234";
 
 		assertEquals(null, surveyService.getSurveyGroup(guid));

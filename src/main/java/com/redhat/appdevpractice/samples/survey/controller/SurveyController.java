@@ -35,6 +35,7 @@ import javax.ws.rs.core.UriInfo;
 
 @CrossOrigin
 @ApplicationScoped
+@RestController
 @RegisterRestClient
 public class SurveyController {
 
