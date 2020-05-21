@@ -14,9 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
-
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
@@ -39,7 +36,6 @@ public class SurveyGroup extends PanacheEntity {
     private String projectCreatorId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //@LazyToOne(value = LazyToOneOption.NO_PROXY)
     @JoinTable(name = "surveygroup_employee_assignments", 
         joinColumns = { @JoinColumn(name = "id") }, 
         inverseJoinColumns = { @JoinColumn(name = "employee_assignment_id") })

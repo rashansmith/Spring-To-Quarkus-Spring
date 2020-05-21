@@ -4,12 +4,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-import javax.ws.rs.container.ResourceContext;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 
 import com.redhat.appdevpractice.samples.survey.http.NewSurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
@@ -19,6 +13,7 @@ import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 import com.redhat.appdevpractice.samples.survey.service.SurveyServiceImpl;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,16 +28,17 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.Transactional;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
+
 @CrossOrigin
-@RestController
 @ApplicationScoped
 @RegisterRestClient
 public class SurveyController {
 
 	private SurveyServiceImpl surveyService;
-
-	@Context
-	ResourceContext resourceContext;
 
 	@Context
 	UriInfo info;
@@ -80,7 +76,6 @@ public class SurveyController {
 		List<SurveyGroup> surveyGroups = this.surveyService.getSurveyGroups();
 
 		List<SurveyGroupResource> resourceCollection = new ArrayList<>();
-
 		surveyGroups.forEach(sg -> resourceCollection.add(HttpUtils.convertToSurveyGroupResourceFrom(sg)));
 
 		return resourceCollection;

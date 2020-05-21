@@ -11,12 +11,15 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.redhat.appdevpractice.samples.survey.http.NewSurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 import com.redhat.appdevpractice.samples.survey.repository.SurveyGroupRepository;
+import com.redhat.appdevpractice.samples.survey.service.H2DatabaseTestResource;
 import com.redhat.appdevpractice.samples.survey.utils.ResourceHelper;
 
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
+import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectMock;
 import io.restassured.RestAssured;
@@ -90,12 +93,13 @@ public class SurveyControllerIntegrationTest {
 	public void shouldReturnAListOfSurveyGroups() throws Exception {
 
 		SurveyGroupResource nasaSurveyGroup = new SurveyGroupResource();
+		
 		nasaSurveyGroup.setOpportunityId("NASA");
 
 		nasaSurveyGroup.getEmployeeAssignments().add(ResourceHelper.generateEmployeeAssignment("bob@redhat.com"));
 
 		SurveyGroupResource coronaVirusSurveyGroup = new SurveyGroupResource();
-		coronaVirusSurveyGroup.setOpportunityId("Corona");
+		coronaVirusSurveyGroup.setOpportunityId("Corona");	
 
 		coronaVirusSurveyGroup.getEmployeeAssignments()
 				.add(ResourceHelper.generateEmployeeAssignment("bob@redhat.com"));
@@ -110,6 +114,6 @@ public class SurveyControllerIntegrationTest {
 		RestAssured.given().when().get("/surveygroups").then().statusCode(200).body("size()", is(2))
 				.body("opportunityId[0]", containsString("NASA"))
 				.body("opportunityId[1]", containsString("Corona"));
-		
+			
 	}
 }

@@ -11,16 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
-import org.hibernate.annotations.Proxy;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
-//@Proxy(lazy=true)
 public class EmployeeAssignment extends PanacheEntity {
 
     @Id
@@ -35,7 +29,6 @@ public class EmployeeAssignment extends PanacheEntity {
     private LocalDate endProjectDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    //@LazyToOne(value = LazyToOneOption.PROXY)
     @JoinTable(name = "surveygroup_employee", 
         joinColumns = { @JoinColumn(name = "employee_id") }, 
         inverseJoinColumns = { @JoinColumn(name = "id") })

@@ -31,10 +31,8 @@ public class SurveyServiceImpl implements SurveyService {
         surveyGroup.setGuid(guid);
         surveyGroupRepository.persistAndFlush(surveyGroup);
         return surveyGroupRepository.findByGuid(guid);
- 
     }
 
-    @Transactional
     public List<SurveyGroup> getSurveyGroups() {
         List<SurveyGroup> surveyGroups = surveyGroupRepository.findAll().list();
         return surveyGroups;
@@ -50,6 +48,7 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
     @Override
+    @Transactional
     public SurveyGroup updateSurveyGroup(SurveyGroup oldSurveyGroup, SurveyGroup newSurveyGroup) {
         oldSurveyGroup.updateWith(newSurveyGroup);
         surveyGroupRepository.persistAndFlush(oldSurveyGroup);
