@@ -3,6 +3,8 @@ The App Dev Practice has created a Spring Boot application that exposes a ReSTfu
 
 Here is a link to the original repo: https://github.com/redhat-appdev-practice/spring-rest-surveygroups
 
+Link to this repo in AppDev Practice: https://github.com/redhat-appdev-practice/survey-quarkus-spring-service
+
 In this repo I am migrating the Spring Boot application to Quarkus: https://quarkus.io/
 
 This is currently a work in progress.
