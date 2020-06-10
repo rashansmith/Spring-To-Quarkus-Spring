@@ -36,12 +36,3 @@ You can run the quarkus application locally by issueing the following command:
 ./mvnw quarkus:dev
 ```
 
-### Current Issues
-
-Tests Passing: 
-- SurveyGroupRepositoryIntegrationTest (5/5)
-- SurveyControllerIntegrationTest (4/4)
-- SurveyControllerTest (5/6)
-- SurveyServiceImplTest (4/5)
-- EmployeeAssignmentTest (2/2)
-
