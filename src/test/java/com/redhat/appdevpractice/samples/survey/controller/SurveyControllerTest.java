@@ -115,20 +115,33 @@ public class SurveyControllerTest {
 		 
 		persistedGroup.setGuid(guid);
 		
+		NewSurveyGroupResource resource = new NewSurveyGroupResource();
+		resource.setOpportunityId("12343423"); 
+		String s = "32432325";
+		
 		controller.createSurvey(new NewSurveyGroupResource());
 		
 		when(surveyService.createSurveyGroup(any(SurveyGroup.class))).thenReturn(
 				 persistedGroup);
 		
-		when(controller.createSurvey(any(NewSurveyGroupResource.class)))
-				.thenReturn(new ResponseEntity<String>(new String(), HttpStatus.CREATED)); 
+		//when(controller.createSurvey(resource))
+		//.thenReturn(new ResponseEntity<String>(s, HttpStatus.CREATED)); 
+		
+		String response2 = controller.createSurvey(resource).getBody().toString();
+		System.out.println(response2);
+		ResponseEntity<String> response = controller.createSurvey(new NewSurveyGroupResource());
+		System.out.println(response.getBody() + " " + response.getHeaders());
+		String locationHeaderPath = response.getHeaders().getLocation().getPath();
+        assertEquals("/surveygroups/" + guid, locationHeaderPath);
+		
+		
 		
 		//verify(controller, times(1)).createSurvey(any(NewSurveyGroupResource.class));
-		String response = this.controller.createSurvey(new NewSurveyGroupResource()).getBody().toString();
+		//String response = this.controller.createSurvey(resource).getBody().toString();
         
         //assertEquals(HttpStatus.CREATED, response.getStatusCode());
         
-        assertEquals("/surveygroups/" + guid, response);
+        //assertEquals("/surveygroups/" + guid, response);
        
 	}
 
@@ -140,14 +153,10 @@ public class SurveyControllerTest {
 
 		when(surveyService.getSurveyGroups()).thenReturn(Arrays.asList(persistedSurveyGroup1, persistedSurveyGroup2));
 
-		// List<SurveyGroupResource> surveyGroupResources =
-		// this.controller.getSurveyGroups();
-
 		this.controller.getSurveyGroups();
 
 		verify(controller, times(1)).getSurveyGroups();
-
-		// assertEquals(2, surveyGroupResources.size());
+		
 	}
 
 	@Test
