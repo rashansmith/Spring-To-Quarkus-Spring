@@ -2,7 +2,6 @@ package com.redhat.appdevpractice.samples.survey.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -11,18 +10,11 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.redhat.appdevpractice.samples.survey.http.NewSurveyGroupResource;
 import com.redhat.appdevpractice.samples.survey.http.SurveyGroupResource;
-import com.redhat.appdevpractice.samples.survey.model.SurveyGroup;
 import com.redhat.appdevpractice.samples.survey.repository.SurveyGroupRepository;
-import com.redhat.appdevpractice.samples.survey.service.H2DatabaseTestResource;
 import com.redhat.appdevpractice.samples.survey.utils.ResourceHelper;
 
-import io.quarkus.hibernate.orm.panache.PanacheQuery;
-import io.quarkus.test.common.QuarkusTestResource;
-import io.quarkus.test.junit.QuarkusMock;
 import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.test.junit.mockito.InjectMock;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
