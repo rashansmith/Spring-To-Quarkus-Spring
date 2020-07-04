@@ -5,9 +5,8 @@ Here is a link to the original repo: https://github.com/redhat-appdev-practice/s
 
 Link to this repo in AppDev Practice: https://github.com/redhat-appdev-practice/survey-quarkus-spring-service
 
-In this repo I am migrating the Spring Boot application to Quarkus: https://quarkus.io/
+In this repo I migrated the Spring Boot application to Quarkus: https://quarkus.io/
 
-This is currently a work in progress.
 
 ### Current Strategy
 To get the dependencies needed to quarkify this app, a sample Quarkus app was made: https://github.com/rashansmith/Spring-To-Quarkus-Quarkus/tree/master/survey-quarkus-spring-service
